@@ -5,7 +5,13 @@ pg-promise-demo
 for all the underlying technologies.**
 
 This is an advanced demo to show the best practices of using [pg-promise], and managing
-your database layer in general:
+your database layer in general.
+
+It also shows how to organize an enterprise-level database application, with consideration
+for an ever-growing database complexity and involvement of many developers through an extensive
+period of time.
+
+Database aspects implemented in the demo:
 
 * The best way to organize your database module
 * How to organize and use database repositories

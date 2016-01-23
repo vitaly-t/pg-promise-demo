@@ -21,5 +21,8 @@ Database aspects implemented in the demo:
 In order to run this application locally, all you need is to provide a test database,
 according to [its connection](https://github.com/vitaly-t/pg-promise-demo/blob/master/db/index.js#L29).
 
+Then you can start it with `node index.js`, and fire away URL commands in a browser,
+as per the web API implemented within [index.js](https://github.com/vitaly-t/pg-promise-demo/blob/master/index.js)
+
 [pg-promise]:https://github.com/vitaly-t/pg-promise
 [pg-monitor]:https://github.com/vitaly-t/pg-monitor

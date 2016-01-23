@@ -1,13 +1,13 @@
 pg-promise-demo
 ===============
 
-**This project is currently under development, but it is already usable as a reference
-for all the underlying technologies.**
+This is an advanced demo of the best practices of using [pg-promise], and managing
+your database architecture.
 
-This is an advanced demo to show the best practices of using [pg-promise], and managing
-your database layer in general.
+The architecture presented here is likely an overkill for a simple application, because
+the purpose of this demo is to show how to build serious database products.
 
-It also shows how to organize an enterprise-level database application, with consideration
+It shows how to organize an enterprise-level database application, with consideration
 for an ever-growing database complexity and involvement of many developers through an extensive
 period of time.
 

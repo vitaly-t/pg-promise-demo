@@ -16,7 +16,7 @@ Database aspects implemented in the demo:
 * The best way to organize your database module
 * How to organize and use database repositories
 * How to organize, initialize and use SQL files
-* Best way to handle and log errors, with the help of [pg-monitor]
+* Efficient diagnostics and errors reporting
 
 [pg-promise]:https://github.com/vitaly-t/pg-promise
 [pg-monitor]:https://github.com/vitaly-t/pg-monitor

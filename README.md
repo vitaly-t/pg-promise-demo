@@ -24,7 +24,11 @@ In order to run this application locally, all you need is to provide a test data
 according to [its connection](https://github.com/vitaly-t/pg-promise-demo/blob/master/db/index.js#L29).
 
 Then you can start it with `node index.js`, and fire away URL commands in a browser,
-as per the web API implemented within [index.js](https://github.com/vitaly-t/pg-promise-demo/blob/master/index.js)
+as per the web API implemented within [index.js](https://github.com/vitaly-t/pg-promise-demo/blob/master/index.js),
+while watching what's happening in:
+
+* the console output (make sure you have NODE_ENV=`development`)
+* errors log - file `db/errors.log`
 
 The application implements two tables: Users->Products as one-to-many.
 

@@ -10,6 +10,8 @@ var os = require('os');
 var fs = require('fs');
 var monitor = require('pg-monitor');
 
+monitor.setTheme('matrix'); // changing the default theme;
+
 // Flag to indicate whether we are in a DEV environment:
 var $DEV = process.env.NODE_ENV === 'development';
 
@@ -32,13 +34,12 @@ monitor.log = function (msg, info) {
 
     if (info.event === 'error') {
 
-        var logText = msg + os.EOL; // next error message + line break;
+        var logText = os.EOL + msg; // line break + next error message;
 
         if (info.time) {
             // If it is a new error being reported,
             // and not an additional error line;
-
-            logText += os.EOL; // append another line break;
+            logText = os.EOL + logText; // add another line break;
         }
 
         fs.appendFile(logFile, logText, function (err) {

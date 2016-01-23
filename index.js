@@ -14,6 +14,16 @@ app.get('/users/create', function (req, res) {
     respond(action, res);
 });
 
+app.get('/users/init', function (req, res) {
+    var action = db.users.init();
+    respond(action, res);
+});
+
+app.get('/users/empty', function (req, res) {
+    var action = db.users.empty();
+    respond(action, res);
+});
+
 app.get('/users/drop', function (req, res) {
     var action = db.users.drop();
     respond(action, res);
@@ -21,6 +31,11 @@ app.get('/users/drop', function (req, res) {
 
 app.get('/users/add', function (req, res) {
     var action = db.users.add(req.name, req.id);
+    respond(action, res);
+});
+
+app.get('/users/total', function (req, res) {
+    var action = db.users.total();
     respond(action, res);
 });
 

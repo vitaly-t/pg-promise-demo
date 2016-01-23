@@ -5,11 +5,25 @@ module.exports = function (obj) {
     return {
 
         create: function () {
+            console.log(sql.users.create.query);
             return obj.none(sql.users.create);
         },
 
         init: function () {
-            return obj.none(sql.users.init);
+            // Since we are expecting multiple inserts in a single command,
+            // we should execute it within a transaction, to make sure no
+            // records are inserted, if at least one of them fails.
+            return obj.tx("Add-Demo-Users", function (t) {
+                return t.none(sql.users.init);
+            });
+        },
+
+        drop: function () {
+            return obj.none(sql.users.drop);
+        },
+
+        empty: function () {
+            return obj.none(sql.users.empty);
         },
 
         // All methods below use in-line sql, because:

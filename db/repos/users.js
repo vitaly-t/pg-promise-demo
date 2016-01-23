@@ -5,7 +5,6 @@ module.exports = function (obj) {
     return {
 
         create: function () {
-            console.log(sql.users.create.query);
             return obj.none(sql.users.create);
         },
 
@@ -13,7 +12,7 @@ module.exports = function (obj) {
             // Since we are expecting multiple inserts in a single command,
             // we should execute it within a transaction, to make sure no
             // records are inserted, if at least one of them fails.
-            return obj.tx("Add-Demo-Users", function (t) {
+            return obj.tx("Demo-Users", function (t) {
                 return t.none(sql.users.init);
             });
         },
@@ -32,8 +31,8 @@ module.exports = function (obj) {
         //    string and its formatting parameters.
 
         // Adds a new user, and returns the new id;
-        add: function (name, active) {
-            return obj.one("INSERT INTO Users VALUES($1, $2) RETURNING id", [name, active])
+        add: function (name) {
+            return obj.one("INSERT INTO Users(name) VALUES($1) RETURNING id", name)
                 .then(function (user) {
                     return user.id;
                 });
@@ -42,7 +41,7 @@ module.exports = function (obj) {
         // Deletes a user from id, and returns a boolean indicating
         // whether the user with such id did exist;
         remove: function (id) {
-            return obj.result("DELETE FROM Users WHERE id=", id)
+            return obj.result("DELETE FROM Users WHERE id=$1", id)
                 .then(function (result) {
                     return result.rowCount === 1;
                 });

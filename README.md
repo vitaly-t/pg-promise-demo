@@ -26,7 +26,7 @@ according to [its connection](https://github.com/vitaly-t/pg-promise-demo/blob/m
 Then you can start it with `node index.js`, and fire away URL commands in a browser,
 as per the web API implemented within [index.js](https://github.com/vitaly-t/pg-promise-demo/blob/master/index.js)
 
-The application implements two tables: Users(1)->(&infin;)Products.
+The application implements two tables: Users->Products as 1->&infin;.
 
 [pg-promise]:https://github.com/vitaly-t/pg-promise
 [pg-monitor]:https://github.com/vitaly-t/pg-monitor

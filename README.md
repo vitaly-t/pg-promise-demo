@@ -19,7 +19,7 @@ Database aspects implemented in the demo:
 * Efficient diagnostics and errors reporting
 
 In order to run this application locally, all you need is to provide a test database,
-according to [its connection](https://github.com/vitaly-t/pg-promise-demo/blob/master/db/index.js#L36).
+according to [its connection](https://github.com/vitaly-t/pg-promise-demo/blob/master/db/index.js#L29).
 
 [pg-promise]:https://github.com/vitaly-t/pg-promise
 [pg-monitor]:https://github.com/vitaly-t/pg-monitor

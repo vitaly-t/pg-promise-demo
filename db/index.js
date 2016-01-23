@@ -25,13 +25,6 @@ var options = {
 
 };
 
-// Load and initialize pg-promise:
-var pgp = require('pg-promise')(options);
-
-// Load and initialize our error logging:
-var logger = require('./logger');
-logger.init(options);
-
 // Database connection parameters:
 var config = {
     host: 'localhost',
@@ -39,6 +32,16 @@ var config = {
     database: 'pg-promise-demo',
     user: 'postgres'
 };
+
+// Load and initialize pg-promise:
+var pgp = require('pg-promise')(options);
+
+// Create the database instance:
+var db = pgp(config);
+
+// Load and initialize all the diagnostics:
+var diag = require('./diagnostics');
+diag.init(options);
 
 // Accessing the internal PG instance to increase the default pool size
 // to 100 connections (from the default of 10), not as a requirement,
@@ -53,5 +56,5 @@ module.exports = {
 
     // Database instance. Only one instance per database is needed
     // within any application.
-    db: pgp(config)
+    db: db
 };

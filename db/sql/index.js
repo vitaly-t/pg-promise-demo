@@ -31,7 +31,7 @@ var sqlProvider = {
         create: sql('users/create.sql'),
         empty: sql('users/empty.sql'),
         init: sql('users/init.sql'),
-        drop: sql('users/drop.sql'),
+        drop: sql('users/drop.sql')
     },
     products: {
         create: sql('products/create.sql'),

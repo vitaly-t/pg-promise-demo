@@ -1,10 +1,42 @@
 var express = require('express');
+var db = require('./db').db;
+
 var app = express();
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+var port = 3000;
+
+app.listen(port, function () {
+    console.log('pg-promise-demo is listening on port ' + port + '...');
 });
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
+app.get('/users/create', function (req, res) {
+    var action = db.users.create();
+    respond(action, res);
 });
+
+app.get('/users/drop', function (req, res) {
+    var action = db.users.drop();
+    respond(action, res);
+});
+
+app.get('/users/add', function (req, res) {
+    var action = db.users.add(req.name, req.id);
+    respond(action, res);
+});
+
+// Generic response helper:
+function respond(action, res) {
+    action
+        .then(function (data) {
+            res.json({
+                success: true,
+                data: data
+            });
+        })
+        .catch(function (error) {
+            res.json({
+                success: false,
+                error: error.message || error
+            });
+        });
+}

@@ -38,7 +38,6 @@ var sqlProvider = {
     products: {
         create: sql('products/create.sql'),
         empty: sql('products/empty.sql'),
-        init: sql('products/init.sql'),
         drop: sql('products/drop.sql'),
         add: sql('products/add.sql')
     }

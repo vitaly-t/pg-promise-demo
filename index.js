@@ -53,7 +53,6 @@ app.get('/users/all', function (req, res) {
     respond(action, res);
 });
 
-
 app.get('/users/total', function (req, res) {
     var action = db.users.total();
     respond(action, res);
@@ -75,6 +74,16 @@ app.get('/products/drop', function (req, res) {
 
 app.get('/products/empty', function (req, res) {
     var action = db.products.empty();
+    respond(action, res);
+});
+
+app.get('/products/add/:userId/:name', function (req, res) {
+    var values = {
+        // handle errors here as needed;
+        userId: parseInt(req.params.userId),
+        name: req.params.name
+    };
+    var action = db.products.add(values);
     respond(action, res);
 });
 

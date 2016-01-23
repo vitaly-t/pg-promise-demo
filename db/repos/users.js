@@ -32,7 +32,7 @@ module.exports = function (obj) {
 
         // Adds a new user, and returns the new id;
         add: function (name) {
-            return obj.one("INSERT INTO Users(name) VALUES($1) RETURNING id", name)
+            return obj.one(sql.users.add, name)
                 .then(function (user) {
                     return user.id;
                 });

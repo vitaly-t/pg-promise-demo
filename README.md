@@ -1,7 +1,7 @@
 pg-promise-demo
 ===============
 
-** This project is currently under development, but it is already usable as a reference
+**This project is currently under development, but it is already usable as a reference
 for all the underlying technologies.**
 
 This is a demo project to show the best practices of using [pg-promise]:

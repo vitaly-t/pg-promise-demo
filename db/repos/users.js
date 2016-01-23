@@ -1,4 +1,4 @@
-var sql = require('../sql');
+var sql = require('../sql').users;
 
 module.exports = function (obj) {
 
@@ -6,7 +6,7 @@ module.exports = function (obj) {
 
         // Creates the table;
         create: function () {
-            return obj.none(sql.users.create);
+            return obj.none(sql.create);
         },
 
         // Initializes the table with some records;
@@ -15,23 +15,23 @@ module.exports = function (obj) {
             // we should execute it within a transaction, to make sure no
             // records are inserted, if at least one of them fails.
             return obj.tx("Demo-Users", function (t) {
-                return t.none(sql.users.init);
+                return t.none(sql.init);
             });
         },
 
         // Drops the table;
         drop: function () {
-            return obj.none(sql.users.drop);
+            return obj.none(sql.drop);
         },
 
         // Removes all records from the table;
         empty: function () {
-            return obj.none(sql.users.empty);
+            return obj.none(sql.empty);
         },
 
         // Adds a new user, and returns the new id;
         add: function (name) {
-            return obj.one(sql.users.add, name)
+            return obj.one(sql.add, name)
                 .then(function (user) {
                     return user.id;
                 });

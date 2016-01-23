@@ -1,27 +1,27 @@
-var sql = require('../sql');
+var sql = require('../sql').products;
 
 module.exports = function (obj) {
     return {
         // Create the table;
         create: function () {
-            return obj.none(sql.products.create);
+            return obj.none(sql.create);
         },
 
         // Drops the table;
         drop: function () {
-            return obj.none(sql.products.drop);
+            return obj.none(sql.drop);
         },
 
         // Removes all records from the table;
         empty: function () {
-            return obj.none(sql.products.empty);
+            return obj.none(sql.empty);
         },
 
         // Adds a new record;
         add: function (values) {
             // example of mapping HTTP requests directly
             // into our our query formatting parameters;
-            return obj.one(sql.products.add, values)
+            return obj.one(sql.add, values)
                 .then(function (user) {
                     return user.id;
                 });

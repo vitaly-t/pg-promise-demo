@@ -42,12 +42,7 @@ monitor.log = function (msg, info) {
             logText = os.EOL + logText; // add another line break;
         }
 
-        fs.appendFile(logFile, logText, function (err) {
-            if (err) {
-                // Error writing into the log file;
-                console.log("Logging Error:", err);
-            }
-        });
+        fs.appendFileSync(logFile, logText); // add error handling as required;
     }
 
     // We absolutely must not let the monitor write anything into the console

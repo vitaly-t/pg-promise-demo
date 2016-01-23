@@ -1,0 +1,33 @@
+{
+  "name": "pg-promise-demo",
+  "version": "0.0.1",
+  "description": "Advanced demo of using pg-promise.",
+  "main": "index.js",
+  "homepage": "https://github.com/vitaly-t/pg-promise-demo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vitaly-t/pg-promise-demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vitaly-t/pg-promise-demo/issues",
+    "email": "vitaly.tomilov@gmail.com"
+  },
+  "keywords": [
+    "pg-promise",
+    "pg-promise demo"
+  ],
+  "author": {
+    "name": "Vitaly Tomilov",
+    "email": "vitaly.tomilov@gmail.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10",
+    "npm": ">=1.4"
+  },
+  "dependencies": {
+    "bluebird": "3.x",
+    "pg-promise": "3.x",
+    "pg-monitor": "0.4"
+  }
+}

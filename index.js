@@ -1,4 +1,3 @@
-var promise = require('bluebird');
 var express = require('express');
 var db = require('./db').db;
 
@@ -10,7 +9,7 @@ app.listen(port, function () {
 });
 
 //////////////////////////////////////////////
-// Users Web API:
+// Users Web API
 //////////////////////////////////////////////
 
 app.get('/users/create', function (req, res) {
@@ -59,7 +58,7 @@ app.get('/users/total', function (req, res) {
 });
 
 //////////////////////////////////////////////
-// Products Web API:
+// Products Web API
 //////////////////////////////////////////////
 
 app.get('/products/create', function (req, res) {

@@ -4,10 +4,12 @@ module.exports = function (obj) {
 
     return {
 
+        // Creates the table;
         create: function () {
             return obj.none(sql.users.create);
         },
 
+        // Initializes the table with some records;
         init: function () {
             // Since we are expecting multiple inserts in a single command,
             // we should execute it within a transaction, to make sure no
@@ -17,18 +19,15 @@ module.exports = function (obj) {
             });
         },
 
+        // Drops the table;
         drop: function () {
             return obj.none(sql.users.drop);
         },
 
+        // Removes all records from the table;
         empty: function () {
             return obj.none(sql.users.empty);
         },
-
-        // All methods below use in-line sql, because:
-        // a. All sql used below is very simple;
-        // b. It is easier to see the relation between a query
-        //    string and its formatting parameters.
 
         // Adds a new user, and returns the new id;
         add: function (name) {
@@ -52,10 +51,12 @@ module.exports = function (obj) {
             return obj.oneOrNone("SELECT * FROM Users WHERE id = $1", id);
         },
 
+        // Returns all the records;
         all: function () {
             return obj.any("SELECT * FROM Users");
         },
 
+        // Returns the total number of records;
         total: function () {
             return obj.one("SELECT count(*) FROM Users")
                 .then(function (data) {

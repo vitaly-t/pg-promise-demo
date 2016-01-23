@@ -1,12 +1,7 @@
-var express = require('express');
 var db = require('./db').db;
 
+var express = require('express');
 var app = express();
-var port = 3000;
-
-app.listen(port, function () {
-    console.log('pg-promise-demo is listening on port ' + port + '...');
-});
 
 //////////////////////////////////////////////
 // Users Web API
@@ -38,12 +33,12 @@ app.get('/users/add/:name', function (req, res) {
 });
 
 app.get('/users/find/:id', function (req, res) {
-    var action = db.users.find(req.params.id);
+    var action = db.users.find(parseInt(req.params.id));
     respond(action, res);
 });
 
 app.get('/users/remove/:id', function (req, res) {
-    var action = db.users.remove(req.params.id);
+    var action = db.users.remove(parseInt(req.params.id));
     respond(action, res);
 });
 
@@ -86,6 +81,26 @@ app.get('/products/add/:userId/:name', function (req, res) {
     respond(action, res);
 });
 
+app.get('/products/find/:id', function (req, res) {
+    var action = db.products.find(parseInt(req.params.id));
+    respond(action, res);
+});
+
+app.get('/products/remove/:id', function (req, res) {
+    var action = db.products.remove(parseInt(req.params.id));
+    respond(action, res);
+});
+
+app.get('/products/all', function (req, res) {
+    var action = db.products.all();
+    respond(action, res);
+});
+
+app.get('/products/total', function (req, res) {
+    var action = db.products.total();
+    respond(action, res);
+});
+
 ///////////////////////////////////////
 // Generic Response Helper
 function respond(action, res) {
@@ -103,3 +118,11 @@ function respond(action, res) {
             });
         });
 }
+
+//////////////////////////////////////
+// Server Initialization:
+var port = 3000;
+
+app.listen(port, function () {
+    console.log('pg-promise-demo is listening on port ' + port + '...');
+});

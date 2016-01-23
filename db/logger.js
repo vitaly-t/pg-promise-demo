@@ -65,27 +65,39 @@ monitor.log = function (msg, info) {
 
 var attached = false;
 
-module.exports = function (options) {
+module.exports = {
 
-    // We are checking to avoid calling 'attach' more than once,
-    // without calling 'detach', as it will throw an error;
+    init: function (options) {
 
-    if (attached) {
-        return; // shouldn't call it more than once;
+        // We are checking to avoid calling 'attach' more than once,
+        // without calling 'detach', as it will throw an error;
+
+        if (attached) {
+            return; // shouldn't call it more than once;
+        }
+        attached = true;
+
+        if ($DEV) {
+
+            // In a DEV environment, we attach to all supported events:
+
+            monitor.attach(options);
+
+        } else {
+
+            // In a PROD environment we should only attach to the type of events
+            // that we intend to log. And we are only logging event 'error' here:
+
+            monitor.attach(options, ['error']);
+        }
+    },
+
+    // This is one method that in practice we never really need. It is
+    // here just to show that it is possible, in case it is ever needed.
+    done: function () {
+        if (attached) {
+            monitor.detach(); // detach from all the events;
+            attached = false;
+        }
     }
-    attached = true;
-
-    if ($DEV) {
-
-        // In a DEV environment, we attach to all supported events:
-
-        monitor.attach(options);
-
-    } else {
-
-        // In a PROD environment, let's attach only to event 'error':
-
-        monitor.attach(options, ['error']);
-    }
-
 };

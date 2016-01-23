@@ -4,7 +4,8 @@ pg-promise-demo
 **This project is currently under development, but it is already usable as a reference
 for all the underlying technologies.**
 
-This is a demo project to show the best practices of using [pg-promise]:
+This is an advanced demo to show the best practices of using [pg-promise], and managing
+your database layer in general:
 
 * The best way to organize your database module
 * How to organize and use database repositories

@@ -2,6 +2,11 @@ var sql = require('../sql').users;
 
 module.exports = function (obj) {
 
+    /*
+     This repository mixes hard-coded and dynamic SQL,
+     primarily to show a diverse example of using both.
+     */
+
     return {
 
         // Creates the table;
@@ -11,10 +16,16 @@ module.exports = function (obj) {
 
         // Initializes the table with some records;
         init: function () {
+
             // Since we are expecting multiple inserts in a single command,
             // we should execute it within a transaction, to make sure no
             // records are inserted, if at least one of them fails.
+
             return obj.tx("Demo-Users", function (t) {
+
+                // Giving your tasks and transactions names
+                // is a reliable way to track their errors.
+
                 return t.none(sql.init);
             });
         },

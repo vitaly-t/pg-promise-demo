@@ -1,8 +1,14 @@
 var sql = require('../sql').products;
 
 module.exports = function (obj) {
+
+    /*
+     This repository relies solely on the external SQL provider.
+     */
+
     return {
-        // Create the table;
+
+        // Creates the table;
         create: function () {
             return obj.none(sql.create);
         },
@@ -17,7 +23,7 @@ module.exports = function (obj) {
             return obj.none(sql.empty);
         },
 
-        // Adds a new record;
+        // Adds a new record and returns the new id;
         add: function (values) {
             // example of mapping HTTP requests directly
             // into our our query formatting parameters;

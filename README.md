@@ -4,7 +4,7 @@ pg-promise-demo
 This is an advanced demo of the best practices of using [pg-promise], and managing
 your database architecture.
 
-The architecture presented here is likely an overkill for a simple application, because
+The architecture presented here is an overkill for a simple application, because
 the purpose of this demo is to show how to build serious database products.
 
 It shows how to organize an enterprise-level database application, with consideration

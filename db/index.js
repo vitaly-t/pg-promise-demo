@@ -1,5 +1,5 @@
-// Bluebird is the best promise library available today,
-// and as such it is the recommended one:
+// Bluebird is the best promise library available
+// today, and it is the recommended one:
 var promise = require('bluebird');
 
 // Loading all the database repositories:
@@ -46,7 +46,7 @@ diag.init(options);
 // Accessing the internal PG instance to increase the default pool size
 // to 100 connections (from the default of 10), not as a requirement,
 // just to show how this can be done:
-pgp.pg.defaults.poolSize = 100;
+pgp.pg.defaults.poolSize = 20;
 
 module.exports = {
 

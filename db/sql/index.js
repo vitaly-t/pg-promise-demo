@@ -1,8 +1,9 @@
-var pgpLib = require('pg-promise');
+var QueryFile = require('pg-promise').QueryFile;
 
 // Helper for linking to external query files:
 function sql(file) {
-    return new pgpLib.QueryFile('./db/sql/' + file, {minify: true});
+    var path = './db/sql/' + file;
+    return new QueryFile(path, {minify: true});
     // QueryFile API: http://vitaly-t.github.io/pg-promise/QueryFile.html
 }
 

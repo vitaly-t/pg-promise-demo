@@ -94,8 +94,8 @@ module.exports = {
     // here just to show that it is possible, in case it is ever needed.
     done: function () {
         if (attached) {
-            monitor.detach(); // detach from all the events;
             attached = false;
+            monitor.detach(); // detach from all the events;
         }
     }
 };

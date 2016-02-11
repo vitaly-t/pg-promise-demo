@@ -4,7 +4,8 @@
 // today, and it is the recommended one:
 var promise = require('bluebird');
 
-// Loading all the database repositories:
+// Loading all the database repositories separately,
+// because event 'extend' is called more than once:
 var repos = {
     users: require('./repos/users'),
     products: require('./repos/products')
@@ -13,14 +14,13 @@ var repos = {
 // pg-promise initialization options:
 var options = {
 
-    // Capitalize all transaction commands:
-    capTX: true,
-
     // Use a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
 
-    // Extend the database protocol with our repositories:
+    // Extending the database protocol with our repositories:
     extend: function () {
+        // Do not use 'require()' here, because this event occurs for every task
+        // and transaction being executed, which should be as fast as possible.
         this.users = repos.users(this);
         this.products = repos.products(this);
     }
@@ -45,10 +45,8 @@ var db = pgp(config);
 var diag = require('./diagnostics');
 diag.init(options);
 
-// Accessing the internal PG instance to increase the default pool size
-// to 100 connections (from the default of 10), not as a requirement,
-// just to show how this can be done:
-pgp.pg.defaults.poolSize = 20;
+// If you need to change the default pool size, here's an example:
+// pgp.pg.defaults.poolSize = 20;
 
 module.exports = {
 

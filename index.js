@@ -143,5 +143,6 @@ function respond(action, res) {
 var port = 3000;
 
 app.listen(port, function () {
-    console.log('pg-promise-demo is listening on port ' + port + '...');
+    console.log('\nThe demo app is listening on HTTP port ' + port + ';');
+    console.log('Ready for GET requests on http://localhost:' + port + '/...');
 });

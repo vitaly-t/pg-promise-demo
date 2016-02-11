@@ -10,136 +10,88 @@ var app = express();
 //////////////////////////////////////////////
 
 // create table Users:
-app.get('/users/create', function (req, res) {
-    var action = db.users.create();
-    respond(action, res);
-});
+GET('/users/create', () => db.users.create());
 
 // add some initial records:
-app.get('/users/init', function (req, res) {
-    var action = db.users.init();
-    respond(action, res);
-});
+GET('/users/init', () => db.users.init());
 
 // remove all records from the table:
-app.get('/users/empty', function (req, res) {
-    var action = db.users.empty();
-    respond(action, res);
-});
+GET('/users/empty', () => db.users.empty());
 
 // drop the table:
-app.get('/users/drop', function (req, res) {
-    var action = db.users.drop();
-    respond(action, res);
-});
+GET('/users/drop', () => db.users.drop());
 
 // add a new user with name:
-app.get('/users/add/:name', function (req, res) {
-    var action = db.users.add(req.params.name);
-    respond(action, res);
-});
+GET('/users/add/:name', req => db.users.add(req.params.name));
 
 // find a user by id:
-app.get('/users/find/:id', function (req, res) {
-    var action = db.users.find(parseInt(req.params.id));
-    respond(action, res);
-});
+GET('/users/find/:id', req => db.users.find(parseInt(req.params.id)));
 
 // remove a user by id:
-app.get('/users/remove/:id', function (req, res) {
-    var action = db.users.remove(parseInt(req.params.id));
-    respond(action, res);
-});
+GET('/users/remove/:id', req => db.users.remove(parseInt(req.params.id)));
 
 // get all users:
-app.get('/users/all', function (req, res) {
-    var action = db.users.all();
-    respond(action, res);
-});
+GET('/users/all', () => db.users.all());
 
 // count all users:
-app.get('/users/total', function (req, res) {
-    var action = db.users.total();
-    respond(action, res);
-});
+GET('/users/total', () => db.users.total());
 
 //////////////////////////////////////////////
 // Products Web API
 //////////////////////////////////////////////
 
 // create table Products:
-app.get('/products/create', function (req, res) {
-    var action = db.products.create();
-    respond(action, res);
-});
+GET('/products/create', () => db.products.create());
 
 // drop the table:
-app.get('/products/drop', function (req, res) {
-    var action = db.products.drop();
-    respond(action, res);
-});
+GET('/products/drop', () => db.products.drop());
 
 // remove all products:
-app.get('/products/empty', function (req, res) {
-    var action = db.products.empty();
-    respond(action, res);
-});
+GET('/products/empty', () => db.products.empty());
 
 // add a new product with user Id and name:
-app.get('/products/add/:userId/:name', function (req, res) {
-    var values = {
-        // handle errors here as needed;
-        userId: parseInt(req.params.userId),
-        name: req.params.name
-    };
-    var action = db.products.add(values);
-    respond(action, res);
-});
+GET('/products/add/:userId/:name', req => db.products.add({
+    // handle errors here as needed;
+    userId: parseInt(req.params.userId),
+    name: req.params.name
+}));
 
 // find a product by id:
-app.get('/products/find/:id', function (req, res) {
-    var action = db.products.find(parseInt(req.params.id));
-    respond(action, res);
-});
+GET('/products/find/:id', req => db.products.find(parseInt(req.params.id)));
 
 // remove a product by id:
-app.get('/products/remove/:id', function (req, res) {
-    var action = db.products.remove(parseInt(req.params.id));
-    respond(action, res);
-});
+GET('/products/remove/:id', req => db.products.remove(parseInt(req.params.id)));
 
 // get all products:
-app.get('/products/all', function (req, res) {
-    var action = db.products.all();
-    respond(action, res);
-});
+GET('/products/all', () => db.products.all());
 
 // count all products:
-app.get('/products/total', function (req, res) {
-    var action = db.products.total();
-    respond(action, res);
-});
+GET('/products/total', () => db.products.total());
 
-///////////////////////////////////////
-// Generic Response Helper
-function respond(action, res) {
-    action
-        .then(function (data) {
-            res.json({
-                success: true,
-                data: data
+/////////////////////////////////////////////
+// Express/server part;
+/////////////////////////////////////////////
+
+// Generic GET handler;
+function GET(url, handler) {
+    app.get(url, (req, res) => {
+        let action = handler(req);
+        action
+            .then(function (data) {
+                res.json({
+                    success: true,
+                    data: data
+                });
+            })
+            .catch(function (error) {
+                res.json({
+                    success: false,
+                    error: error.message || error
+                });
             });
-        })
-        .catch(function (error) {
-            res.json({
-                success: false,
-                error: error.message || error
-            });
-        });
+    });
 }
 
-//////////////////////////////////////
-// Server Initialization:
 var port = 3000;
 
 app.listen(port, function () {

@@ -16,19 +16,20 @@ module.exports = function (obj) {
             return obj.none(sql.create);
         },
 
-        // Initializes the table with some records;
+        // Initializes the table with some user records,
+        // and return their id-s;
         init: function () {
 
-            // Since we are expecting multiple inserts in a single command,
-            // we should execute it within a transaction, to make sure no
-            // records are inserted, if at least one of them fails.
-
-            return obj.tx("Demo-Users", function (t) {
+            // When we execute more than one insert, we should use a transaction,
+            // although in this particular example we use a single concatenated
+            // insert, so transaction isn't needed. It is here just as an example.
+            return obj.tx("Demo-Users", t=> {
 
                 // Giving your tasks and transactions names
                 // is a reliable way to track their errors.
 
-                return t.none(sql.init);
+                return t.any(sql.init)
+                    .then(data=>data.map(m=> m.id));
             });
         },
 
@@ -45,18 +46,14 @@ module.exports = function (obj) {
         // Adds a new user, and returns the new id;
         add: function (name) {
             return obj.one(sql.add, name)
-                .then(function (user) {
-                    return user.id;
-                });
+                .then(user=>user.id);
         },
 
-        // Deletes a user from id, and returns a boolean indicating
-        // whether the user with such id did exist;
+        // Tries to delete a user from id, and
+        // returns the number of records deleted;
         remove: function (id) {
             return obj.result("DELETE FROM Users WHERE id=$1", id)
-                .then(function (result) {
-                    return result.rowCount === 1;
-                });
+                .then(result=>result.rowCount);
         },
 
         // Tries to find a user from id;
@@ -69,12 +66,10 @@ module.exports = function (obj) {
             return obj.any("SELECT * FROM Users");
         },
 
-        // Returns the total number of records;
+        // Returns the total number of users;
         total: function () {
             return obj.one("SELECT count(*) FROM Users")
-                .then(function (data) {
-                    return data.count;
-                });
+                .then(data=>data.count);
         }
     };
 };

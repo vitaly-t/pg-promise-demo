@@ -31,18 +31,14 @@ module.exports = function (obj) {
             // example of mapping HTTP requests directly
             // into our our query formatting parameters;
             return obj.one(sql.add, values)
-                .then(function (user) {
-                    return user.id;
-                });
+                .then(user=>user.id);
         },
 
-        // Deletes a product from id, and returns a boolean indicating
-        // whether the product with such id did exist;
+        // Tries to delete a product from id, and returns
+        // the number of records deleted;
         remove: function (id) {
             return obj.result("DELETE FROM Products WHERE id=$1", id)
-                .then(function (result) {
-                    return result.rowCount === 1;
-                });
+                .then(result=>result.rowCount);
         },
 
         // Tries to find a product from id;
@@ -55,12 +51,10 @@ module.exports = function (obj) {
             return obj.any("SELECT * FROM Products");
         },
 
-        // Returns the total number of records;
+        // Returns the total number of products;
         total: function () {
             return obj.one("SELECT count(*) FROM Products")
-                .then(function (data) {
-                    return data.count;
-                });
+                .then(data=>data.count);
         }
 
     };

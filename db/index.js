@@ -1,3 +1,5 @@
+'use strict';
+
 // Bluebird is the best promise library available
 // today, and it is the recommended one:
 var promise = require('bluebird');

@@ -1,3 +1,5 @@
+'use strict';
+
 var QueryFile = require('pg-promise').QueryFile;
 
 // Helper for linking to external query files:

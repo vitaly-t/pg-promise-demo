@@ -17,10 +17,14 @@ Database aspects implemented in the demo:
 * How to organize, initialize and use SQL files
 * Efficient diagnostics and errors reporting
 
+The demo uses ES6 syntax, and therefore requires Node.JS 4.x or later.
+
 ### Running the app
 
 This demo is mostly for you to look through its source code to understand its structure
 and the overall approach. It is also simple enough that running it isn't really necessary.
+
+You can either clone it or install via `$ npm install pg-promise-demo`.
 
 However, if you do want to run this application locally, you need to provide a test database,
 according to [its connection](https://github.com/vitaly-t/pg-promise-demo/blob/master/db/index.js#L31).

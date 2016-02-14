@@ -25,7 +25,7 @@ var logFile = './db/errors.log';
 // necessary details for that.
 //
 // see: https://github.com/vitaly-t/pg-monitor#log
-monitor.log = function (msg, info) {
+monitor.log = (msg, info) => {
 
     // In a PROD environment we will only receive event 'error',
     // because this is how we set it up below.
@@ -65,7 +65,7 @@ var attached = false;
 module.exports = {
 
     // Monitor initialization function;
-    init: function (options) {
+    init: options => {
 
         // We are checking to avoid calling 'attach' more than once,
         // without calling 'detach', as it will throw an error;
@@ -92,7 +92,7 @@ module.exports = {
 
     // This is one method that in practice we never really need. It is
     // here just to show that it is possible, in case it is ever needed.
-    done: function () {
+    done: () => {
         if (attached) {
             attached = false;
             monitor.detach(); // detach from all the events;

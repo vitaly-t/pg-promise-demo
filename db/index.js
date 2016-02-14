@@ -1,7 +1,7 @@
 'use strict';
 
-// Bluebird is the best promise library available
-// today, and it is the recommended one:
+// Bluebird is the best promise library available today,
+// and is the one recommended here:
 var promise = require('bluebird');
 
 // Loading all the database repositories separately,
@@ -17,12 +17,12 @@ var options = {
     // Use a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
 
-    // Extending the database protocol with our repositories:
-    extend: function () {
+    // Extending the database protocol with our custom repositories:
+    extend: obj => {
         // Do not use 'require()' here, because this event occurs for every task
         // and transaction being executed, which should be as fast as possible.
-        this.users = repos.users(this);
-        this.products = repos.products(this);
+        obj.users = repos.users(obj);
+        obj.products = repos.products(obj);
     }
 
 };

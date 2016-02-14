@@ -75,15 +75,14 @@ GET('/products/total', () => db.products.total());
 // Generic GET handler;
 function GET(url, handler) {
     app.get(url, (req, res) => {
-        let action = handler(req);
-        action
-            .then(function (data) {
+        handler(req)
+            .then(data => {
                 res.json({
                     success: true,
                     data: data
                 });
             })
-            .catch(function (error) {
+            .catch(error => {
                 res.json({
                     success: false,
                     error: error.message || error
@@ -94,7 +93,6 @@ function GET(url, handler) {
 
 var port = 3000;
 
-app.listen(port, function () {
-    console.log('\nThe demo app is listening on HTTP port ' + port + ';');
-    console.log('Ready for GET requests on http://localhost:' + port + '/...');
+app.listen(port, () => {
+    console.log('\nReady for GET requests on http://localhost:' + port + '/...');
 });

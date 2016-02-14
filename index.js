@@ -51,7 +51,6 @@ GET('/products/empty', () => db.products.empty());
 
 // add a new product with user Id and name:
 GET('/products/add/:userId/:name', req => db.products.add({
-    // handle errors here as needed;
     userId: parseInt(req.params.userId),
     name: req.params.name
 }));
@@ -94,5 +93,10 @@ function GET(url, handler) {
 var port = 3000;
 
 app.listen(port, () => {
-    console.log('\nReady for GET requests on http://localhost:' + port + '/...');
+    console.log('\nReady for GET requests on http://localhost:' + port + '...');
+    app._router.stack.forEach(r => {
+        if (r.route && r.route.path) {
+            console.log('...' + r.route.path)
+        }
+    });
 });

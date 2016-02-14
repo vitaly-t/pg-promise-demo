@@ -12,64 +12,46 @@ module.exports = rep => {
     return {
 
         // Creates the table;
-        create: () => {
-            return rep.none(sql.create);
-        },
+        create: () => rep.none(sql.create),
 
         // Initializes the table with some user records,
         // and return their id-s;
-        init: () => {
-
+        init: () =>
             // When we execute more than one insert, we should use a transaction,
             // although in this particular example we use a single concatenated
             // insert, so transaction isn't needed. It is here just as an example.
-            return rep.tx("Demo-Users", t=> {
-
-                // Giving your tasks and transactions names
-                // is a reliable way to track their errors.
-
-                return t.any(sql.init)
-                    .then(data=>data.map(m=> m.id));
-            });
-        },
+            //
+            // Also, giving your tasks and transactions names is a reliable way
+            // to track their errors.
+            rep.tx("Demo-Users", t =>
+                t.any(sql.init)
+                    .then(data => data.map(m => m.id))
+            ),
 
         // Drops the table;
-        drop: () => {
-            return rep.none(sql.drop);
-        },
+        drop: () => rep.none(sql.drop),
 
         // Removes all records from the table;
-        empty: () => {
-            return rep.none(sql.empty);
-        },
+        empty: () => rep.none(sql.empty),
 
         // Adds a new user, and returns the new id;
-        add: name => {
-            return rep.one(sql.add, name)
-                .then(user=>user.id);
-        },
+        add: name => rep.one(sql.add, name)
+            .then(user => user.id),
 
-        // Tries to delete a user from id, and
-        // returns the number of records deleted;
-        remove: id => {
-            return rep.result("DELETE FROM Users WHERE id=$1", id)
-                .then(result=>result.rowCount);
-        },
+        // Tries to delete a user by id, and returns
+        // the number of records deleted;
+        remove: id => rep.result("DELETE FROM Users WHERE id=$1", id)
+            .then(result => result.rowCount),
 
         // Tries to find a user from id;
-        find: id => {
-            return rep.oneOrNone("SELECT * FROM Users WHERE id = $1", id);
-        },
+        find: id => rep.oneOrNone("SELECT * FROM Users WHERE id = $1", id),
 
         // Returns all the records;
-        all: () => {
-            return rep.any("SELECT * FROM Users");
-        },
+        all: () => rep.any("SELECT * FROM Users"),
 
         // Returns the total number of users;
-        total: () => {
-            return rep.one("SELECT count(*) FROM Users")
-                .then(data=>data.count);
-        }
+        total: () => rep.one("SELECT count(*) FROM Users")
+            .then(data => data.count)
+
     };
 };

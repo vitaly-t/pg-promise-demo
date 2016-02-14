@@ -12,50 +12,35 @@ module.exports = rep => {
     return {
 
         // Creates the table;
-        create: () => {
-            return rep.none(sql.create);
-        },
+        create: () => rep.none(sql.create),
 
         // Drops the table;
-        drop: () => {
-            return rep.none(sql.drop);
-        },
+        drop: () => rep.none(sql.drop),
 
         // Removes all records from the table;
-        empty: () => {
-            return rep.none(sql.empty);
-        },
+        empty: () => rep.none(sql.empty),
 
         // Adds a new record and returns the new id;
-        add: values => {
+        add: values =>
             // example of mapping HTTP requests directly
             // into our our query formatting parameters;
-            return rep.one(sql.add, values)
-                .then(user=>user.id);
-        },
+            rep.one(sql.add, values)
+                .then(user => user.id),
 
-        // Tries to delete a product from id, and returns
+        // Tries to delete a product by id, and returns
         // the number of records deleted;
-        remove: id => {
-            return rep.result("DELETE FROM Products WHERE id=$1", id)
-                .then(result=>result.rowCount);
-        },
+        remove: id => rep.result("DELETE FROM Products WHERE id=$1", id)
+            .then(result => result.rowCount),
 
         // Tries to find a product from id;
-        find: id => {
-            return rep.oneOrNone("SELECT * FROM Products WHERE id = $1", id);
-        },
+        find: id => rep.oneOrNone("SELECT * FROM Products WHERE id = $1", id),
 
         // Returns all the records;
-        all: () => {
-            return rep.any("SELECT * FROM Products");
-        },
+        all: () => rep.any("SELECT * FROM Products"),
 
         // Returns the total number of products;
-        total: () => {
-            return rep.one("SELECT count(*) FROM Products")
-                .then(data=>data.count);
-        }
+        total: () => rep.one("SELECT count(*) FROM Products")
+            .then(data => data.count)
 
     };
 };

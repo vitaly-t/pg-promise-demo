@@ -29,7 +29,7 @@ module.exports = rep => {
 
         // Tries to delete a product by id, and returns
         // the number of records deleted;
-        remove: id => rep.result("DELETE FROM Products WHERE id=$1", id)
+        remove: id => rep.result("DELETE FROM Products WHERE id = $1", id)
             .then(result => result.rowCount),
 
         // Tries to find a product from id;

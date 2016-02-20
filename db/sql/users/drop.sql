@@ -1,7 +1,7 @@
 /*
-    Drops the entire table Users;
+    Drops the entire table Users.
 
-    NOTE: We only add schema here to demonstrate ability of class QueryFormat
+    NOTE: We only add schema here to demonstrate ability of class QueryFile
     to pre-format SQL with static formatting parameters when needs to be.
 */
 DROP TABLE ${schema~}.Users;

@@ -1,16 +1,17 @@
 /*
-    Inserting a few demo users into the database;
+    Inserting a few demo users into the database.
 
-    NOTE:
+    NOTES:
 
-    You can do multiple separate inserts, if you want, but using
-    a single concatenated insert is significantly faster.
+    - You can do multiple separate inserts, if you want, but using
+      a single concatenated insert is significantly faster.
+
+    - We only add schema here to demonstrate ability of class QueryFile
+      to pre-format SQL with static formatting parameters when needs to be.
 
     See also:
     https://github.com/vitaly-t/pg-promise/wiki/Performance-Boost
 
-    NOTE: We only add schema here to demonstrate ability of class QueryFormat
-    to pre-format SQL with static formatting parameters when needs to be.
 */
 
 INSERT INTO ${schema~}.Users(name) VALUES

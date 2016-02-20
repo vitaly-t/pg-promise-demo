@@ -1,7 +1,7 @@
 /*
-    Creates table Users;
+    Creates table Users.
 
-    NOTE: We only add schema here to demonstrate ability of class QueryFormat
+    NOTE: We only add schema here to demonstrate ability of class QueryFile
     to pre-format SQL with static formatting parameters when needs to be.
 */
 

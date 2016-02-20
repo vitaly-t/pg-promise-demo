@@ -8,14 +8,16 @@ function sql(file) {
     var options = {
         minify: true, // minifying the SQL is always advised
         params: {
-            // This optional feature was added in pg-promise 3.2.0;
+            // Support for 'params' was added in pg-promise 3.2.0;
+
             // Showing how to use static pre-formatting parameters -
-            // variable `schema` in SQL for Users, only to show that we can;
+            // variable 'schema' in each SQL, only to show how.
             schema: 'public'
         }
     };
     return new QueryFile(path, options);
-    // QueryFile API: http://vitaly-t.github.io/pg-promise/QueryFile.html
+    // See QueryFile API:
+    // http://vitaly-t.github.io/pg-promise/QueryFile.html
 }
 
 //////////////////////////////////////////////////////////////////////////

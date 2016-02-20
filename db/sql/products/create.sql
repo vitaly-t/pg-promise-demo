@@ -1,8 +1,11 @@
 /*
-    Creates table Products;
+    Creates table Products.
+
+    NOTE: We only add schema here to demonstrate ability of class QueryFile
+    to pre-format SQL with static formatting parameters when needs to be.
 */
 
-CREATE TABLE Products
+CREATE TABLE ${schema~}.Products
 (
     id serial PRIMARY KEY,
     userId int not null references Users(id),

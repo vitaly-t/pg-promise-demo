@@ -1,7 +1,7 @@
 /*
-    Inserts a new user record;
+    Inserts a new user record.
 
-    NOTE: We only add schema here to demonstrate ability of class QueryFormat
+    NOTE: We only add schema here to demonstrate ability of class QueryFile
     to pre-format SQL with static formatting parameters when needs to be.
 */
 INSERT INTO ${schema~}.Users(name)

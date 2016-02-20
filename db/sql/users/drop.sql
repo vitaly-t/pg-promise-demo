@@ -1,4 +1,7 @@
 /*
     Drops the entire table Users;
+
+    NOTE: We only add schema here to demonstrate ability of class QueryFormat
+    to pre-format SQL with static formatting parameters when needs to be.
 */
-DROP TABLE Users;
+DROP TABLE ${schema~}.Users;

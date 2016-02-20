@@ -5,7 +5,16 @@ var QueryFile = require('pg-promise').QueryFile;
 // Helper for linking to external query files:
 function sql(file) {
     var path = './db/sql/' + file;
-    return new QueryFile(path, {minify: true});
+    var options = {
+        minify: true, // minifying the SQL is always advised
+        params: {
+            // This optional feature was added in pg-promise 3.2.0;
+            // Showing how to use static pre-formatting parameters -
+            // variable `schema` in SQL for Users, only to show that we can;
+            schema: 'public'
+        }
+    };
+    return new QueryFile(path, options);
     // QueryFile API: http://vitaly-t.github.io/pg-promise/QueryFile.html
 }
 

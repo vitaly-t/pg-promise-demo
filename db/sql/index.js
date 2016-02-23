@@ -11,7 +11,7 @@ function sql(file) {
             // Support for 'params' was added in pg-promise 3.2.0;
 
             // Showing how to use static pre-formatting parameters -
-            // variable 'schema' in each SQL, only to show how.
+            // variable 'schema' in each SQL, as an example;
             schema: 'public'
         }
     };

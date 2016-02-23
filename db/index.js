@@ -52,9 +52,9 @@ module.exports = {
 
     // Library instance is often necessary to access all the useful
     // types and namespaces available within the library's root:
-    pgp: pgp,
+    pgp,
 
     // Database instance. Only one instance per database is needed
     // within any application.
-    db: db
+    db
 };

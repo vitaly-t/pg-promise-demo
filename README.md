@@ -5,7 +5,7 @@ This is an advanced demo of the best practices of using [pg-promise], and managi
 your database architecture.
 
 The architecture presented here may be an overkill for a simple application, because
-the purpose of this demo is mostly to show how to build proper database products.
+the purpose of this demo is mostly to show how to build scalable database products.
 
 It shows how to organize an enterprise-level database application, with consideration
 for an ever-growing database complexity and involvement of many developers.

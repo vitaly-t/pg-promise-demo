@@ -1,6 +1,6 @@
 {
   "name": "pg-promise-demo",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Advanced demo of using pg-promise.",
   "main": "index.js",
   "homepage": "https://github.com/vitaly-t/pg-promise-demo",

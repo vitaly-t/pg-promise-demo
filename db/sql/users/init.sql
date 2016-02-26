@@ -1,12 +1,12 @@
 /*
-    Inserting a few demo users into the database.
+    Inserting a few demo users into the database, and returning their id-s;
 
     NOTES:
 
     - You can do multiple separate inserts, if you want, but using
       a single concatenated insert is significantly faster.
 
-    - We only add schema here to demonstrate ability of class QueryFile
+    - We only add schema here to demonstrate the ability of class QueryFile
       to pre-format SQL with static formatting parameters when needs to be.
 
     See also:

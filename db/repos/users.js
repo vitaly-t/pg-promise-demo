@@ -51,7 +51,7 @@ module.exports = rep => {
 
         // Returns the total number of users;
         total: () => rep.one("SELECT count(*) FROM Users")
-            .then(data => data.count)
+            .then(data => parseInt(data.count))
 
     };
 };

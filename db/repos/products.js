@@ -40,7 +40,7 @@ module.exports = rep => {
 
         // Returns the total number of products;
         total: () => rep.one("SELECT count(*) FROM Products")
-            .then(data => data.count)
+            .then(data => parseInt(data.count))
 
     };
 };

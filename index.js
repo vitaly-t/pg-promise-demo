@@ -93,11 +93,11 @@ function GET(url, handler) {
 var port = 3000;
 
 app.listen(port, () => {
-    console.log('\nReady for GET requests on http://localhost:' + port + '...');
     // List all supported URL commands:
     app._router.stack.forEach(r => {
         if (r.route && r.route.path) {
-            console.log('...' + r.route.path);
+            console.log('.' + r.route.path);
         }
     });
+    console.log('\nReady for GET requests on http://localhost:' + port);
 });

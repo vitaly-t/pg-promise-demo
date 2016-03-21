@@ -5,7 +5,7 @@
 var promise = require('bluebird');
 
 // Loading all the database repositories separately,
-// because event 'extend' is called more than once:
+// because event 'extend' is called multiple times:
 var repos = {
     users: require('./repos/users'),
     products: require('./repos/products')
@@ -45,15 +45,15 @@ var db = pgp(config);
 var diag = require('./diagnostics');
 diag.init(options);
 
-// If you need to change the default pool size, here's an example:
+// If you ever need to change the default pool size, here's an example:
 // pgp.pg.defaults.poolSize = 20;
 
 module.exports = {
-
+    
     // Library instance is often necessary to access all the useful
     // types and namespaces available within the library's root:
     pgp,
-
+    
     // Database instance. Only one instance per database is needed
     // within any application.
     db

@@ -14,15 +14,13 @@ module.exports = rep => {
         // Creates the table;
         create: () => rep.none(sql.create),
 
-        // Initializes the table with some user records,
-        // and return their id-s;
+        // Initializes the table with some user records, and return their id-s;
         init: () =>
-            // When we execute more than one insert, we should use a transaction,
-            // although in this particular example we use a single concatenated
-            // insert, so transaction isn't needed. It is here just as an example.
+            // When we execute more than one insert, we should use a transaction, although in this
+            // particular example we use a single concatenated insert, so transaction isn't needed.
+            // It is here just as an example.
             //
-            // Also, giving your tasks and transactions names is a reliable way
-            // to track their errors.
+            // Also, giving your tasks and transactions names is a reliable way to track their errors.
             rep.tx("Demo-Users", t =>
                 t.any(sql.init)
                     .then(data => data.map(m => m.id))
@@ -38,8 +36,7 @@ module.exports = rep => {
         add: name => rep.one(sql.add, name)
             .then(user => user.id),
 
-        // Tries to delete a user by id, and returns
-        // the number of records deleted;
+        // Tries to delete a user by id, and returns the number of records deleted;
         remove: id => rep.result("DELETE FROM Users WHERE id = $1", id)
             .then(result => result.rowCount),
 

@@ -5,6 +5,10 @@ var db = require('./db').db;
 var express = require('express');
 var app = express();
 
+// Note that we implement only GET handlers here, because:
+// 1. This demo is to be tested by typing URL-s manually in the browser;
+// 2. The demo's focus is on a proper database layer, not a web server.
+
 //////////////////////////////////////////////
 // Users Web API
 //////////////////////////////////////////////
@@ -78,7 +82,7 @@ function GET(url, handler) {
             .then(data => {
                 res.json({
                     success: true,
-                    data: data
+                    data
                 });
             })
             .catch(error => {

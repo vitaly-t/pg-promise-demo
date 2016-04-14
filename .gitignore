@@ -1,3 +1,5 @@
 .idea/
 node_modules/
-db/errors.log
+*.log
+TypeScript/**/*.js
+TypeScript/**/*.map

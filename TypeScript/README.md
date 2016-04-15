@@ -1,4 +1,4 @@
-### TypeScript implementation of pg-promise-demo
+## TypeScript implementation of pg-promise-demo
 
 ### Prerequisites
 

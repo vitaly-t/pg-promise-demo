@@ -8,9 +8,9 @@ import * as promise from 'bluebird';
 import users = require('./repos/users');
 import products = require('./repos/products');
 
-interface Extensions {
-    users: users.Repository,
-    products: products.Repository
+interface IExtensions {
+    users:users.Repository,
+    products:products.Repository
 }
 
 // pg-promise initialization options:
@@ -39,8 +39,8 @@ var config = {
 import * as pgPromise from 'pg-promise';
 var pgp = pgPromise(options);
 
-// Create the database instance:
-var db = <pgPromise.IDatabase<Extensions>&Extensions>pgp(config);
+// Create the database instance with extensions:
+var db = <pgPromise.IDatabase<IExtensions>&IExtensions>pgp(config);
 
 // Load and initialize all the diagnostics:
 import diag = require('./diagnostics');

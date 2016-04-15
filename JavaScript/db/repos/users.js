@@ -21,7 +21,7 @@ module.exports = rep => {
             // It is here just as an example.
             //
             // Also, giving your tasks and transactions names is a reliable way to track their errors.
-            rep.tx("Demo-Users", t =>
+            rep.tx('Demo-Users', t =>
                 t.any(sql.init)
                     .then(data => data.map(m => m.id))
             ),
@@ -37,17 +37,17 @@ module.exports = rep => {
             .then(user => user.id),
 
         // Tries to delete a user by id, and returns the number of records deleted;
-        remove: id => rep.result("DELETE FROM Users WHERE id = $1", id)
+        remove: id => rep.result('DELETE FROM Users WHERE id = $1', id)
             .then(result => result.rowCount),
 
         // Tries to find a user from id;
-        find: id => rep.oneOrNone("SELECT * FROM Users WHERE id = $1", id),
+        find: id => rep.oneOrNone('SELECT * FROM Users WHERE id = $1', id),
 
         // Returns all the records;
-        all: () => rep.any("SELECT * FROM Users"),
+        all: () => rep.any('SELECT * FROM Users'),
 
         // Returns the total number of users;
-        total: () => rep.one("SELECT count(*) FROM Users")
+        total: () => rep.one('SELECT count(*) FROM Users')
             .then(data => parseInt(data.count))
 
     };

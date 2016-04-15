@@ -9,20 +9,20 @@ import users = require('./repos/users');
 import products = require('./repos/products');
 
 interface Extensions {
-    users:users.Repository;
-    products:products.Repository;
+    users:users.Repository,
+    products:products.Repository
 }
 
 // pg-promise initialization options:
 var options = {
-    
+
     // Use a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
-    
+
     // Extending the database protocol with our custom repositories:
     extend: obj => {
-        obj.users = users.extend(obj);
-        obj.products = products.extend(obj);
+        obj.users = new users.Repository(obj);
+        obj.products = new products.Repository(obj);
     }
 
 };
@@ -50,11 +50,11 @@ diag.init(options);
 // pgp.pg.defaults.poolSize = 20;
 
 export = {
-    
+
     // Library instance is often necessary to access all the useful
     // types and namespaces available within the library's root:
     pgp,
-    
+
     // Database instance. Only one instance per database is needed
     // within any application.
     db

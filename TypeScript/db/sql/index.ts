@@ -1,14 +1,12 @@
 /// <reference path="../../../node_modules/pg-promise/typescript/pg-promise.d.ts" />
 
-import * as pgPromise from "pg-promise";
-
-var QueryFile = pgPromise.QueryFile;
+import {QueryFile} from "pg-promise";
 
 // Helper for binding to external query files;
 function sql(file) {
 
     var path = './db/sql/' + file;
-    
+
     var options = {
 
         // minifying the SQL is always advised;

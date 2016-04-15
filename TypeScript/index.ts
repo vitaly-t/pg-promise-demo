@@ -11,4 +11,5 @@ db.task(t=>t.batch([
     ]))
     .then(data=> {
         console.log(data);
+        pgp.end();
     });

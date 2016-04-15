@@ -25,7 +25,7 @@ export class Repository {
         // It is here just as an example.
         //
         // Also, giving your tasks and transactions names is a reliable way to track their errors.
-        this.db.tx("Demo-Users", t =>
+        this.db.tx('Demo-Users', t =>
             t.any(sql.init)
                 .then(data => data.map(m => m.id))
         );
@@ -41,16 +41,16 @@ export class Repository {
         .then(user => user.id);
 
     // Tries to delete a user by id, and returns the number of records deleted;
-    remove = id => this.db.result("DELETE FROM Users WHERE id = $1", id)
+    remove = id => this.db.result('DELETE FROM Users WHERE id = $1', id)
         .then(result => result.rowCount);
 
     // Tries to find a user from id;
-    find = id => this.db.oneOrNone("SELECT * FROM Users WHERE id = $1", id);
+    find = id => this.db.oneOrNone('SELECT * FROM Users WHERE id = $1', id);
 
     // Returns all the records;
-    all = () => this.db.any("SELECT * FROM Users");
+    all = () => this.db.any('SELECT * FROM Users');
 
     // Returns the total number of products;
-    total = () => this.db.one("SELECT count(*) FROM Users")
+    total = () => this.db.one('SELECT count(*) FROM Users')
         .then(data => parseInt(data.count));
 }

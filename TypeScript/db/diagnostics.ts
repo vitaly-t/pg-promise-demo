@@ -1,5 +1,5 @@
-/// <reference path="../external/node.ts" />
-/// <reference path="../../node_modules/pg-monitor/typescript/pg-monitor.d.ts" />
+/// <reference path='../external/node' />
+/// <reference path='../../node_modules/pg-monitor/typescript/pg-monitor' />
 
 // In this example we are showing how to properly use pg-monitor to log
 // errors in a DEV and PROD environments.
@@ -11,9 +11,9 @@
 
 import os = require('os');
 import fs = require('fs');
-import * as monitor from 'pg-monitor';
+import * as pgMonitor from 'pg-monitor';
 
-monitor.setTheme('matrix'); // changing the default theme;
+pgMonitor.setTheme('matrix'); // changing the default theme;
 
 // Flag to indicate whether we are in a DEV environment:
 var $DEV = process.env.NODE_ENV === 'development';
@@ -26,7 +26,7 @@ var logFile = './db/errors.log';
 // necessary details for that.
 //
 // see: https://github.com/vitaly-t/pg-monitor#log
-monitor.log = (msg, info) => {
+pgMonitor.log = (msg, info) => {
 
     // In a PROD environment we will only receive event 'error',
     // because this is how we set it up below.
@@ -80,14 +80,14 @@ export = {
 
             // In a DEV environment, we attach to all supported events:
 
-            monitor.attach(options);
+            pgMonitor.attach(options);
 
         } else {
 
             // In a PROD environment we should only attach to the type of events
             // that we intend to log. And we are only logging event 'error' here:
 
-            monitor.attach(options, ['error']);
+            pgMonitor.attach(options, ['error']);
         }
     },
 
@@ -96,7 +96,7 @@ export = {
     done: () => {
         if (attached) {
             attached = false;
-            monitor.detach(); // detach from all the events;
+            pgMonitor.detach(); // detach from all the events;
         }
     }
 };

@@ -1,6 +1,6 @@
-/// <reference path="../../../node_modules/pg-promise/typescript/pg-promise.d.ts" />
+/// <reference path='../../../node_modules/pg-promise/typescript/pg-promise' />
 
-import {QueryFile} from "pg-promise";
+import {QueryFile} from 'pg-promise';
 
 // Helper for binding to external query files;
 function sql(file) {

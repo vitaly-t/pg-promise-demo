@@ -1,16 +1,16 @@
-/// <reference path="../../typings/main" />
-/// <reference path="../../node_modules/pg-promise/typescript/pg-promise.d.ts" />
+/// <reference path='../../typings/main' />
+/// <reference path='../../node_modules/pg-promise/typescript/pg-promise' />
 
 // Bluebird is the best promise library available today,
 // and is the one recommended here:
-import * as promise from "bluebird";
+import * as promise from 'bluebird';
 
 import users = require('./repos/users');
 import products = require('./repos/products');
 
 interface Extensions {
-    users:users.Repository,
-    products:products.Repository
+    users: users.Repository,
+    products: products.Repository
 }
 
 // pg-promise initialization options:
@@ -40,7 +40,7 @@ import * as pgPromise from 'pg-promise';
 var pgp = pgPromise(options);
 
 // Create the database instance:
-var db = pgp<Extensions>(config);
+var db = <pgPromise.IDatabase<Extensions>&Extensions>pgp(config);
 
 // Load and initialize all the diagnostics:
 import diag = require('./diagnostics');

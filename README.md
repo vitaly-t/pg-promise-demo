@@ -3,33 +3,32 @@ pg-promise-demo
 
 This is an advanced demo of the best practices of using [pg-promise], and managing your database architecture.
 
-The architecture presented here may be an overkill for a simple application, because the purpose of this demo
-is mostly to show how to build scalable database products.
-
-It shows how to organize an enterprise-level database application, with consideration for an ever-growing database
-complexity and involvement of many developers.
+It shows how to organize an enterprise-level database application, with consideration for ever-growing database complexity.
 
 Database aspects implemented in the demo:
 
 * The best way to organize your database module
-* How to organize and use database repositories
+* How to implement and use database repositories
 * How to organize, initialize and use SQL files
 * Efficient diagnostics and errors reporting
 
-The demo uses ES6 syntax, and therefore requires Node.JS 4.x or later.
+The demo includes two separate implementations, with identical functionality:
 
-### Running the app
+* [ES6 JavaScript implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript)
+* [TypeScript implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript)
+
+### Installing & Running
 
 You can either clone it or install via `$ npm install pg-promise-demo`.
 
-This demo is mostly for you to look through its source code to understand its structure and the overall approach.
+This demo is here mostly for you to browse through its source code to understand its structure and the overall approach.
 It is also simple enough that running it isn't really necessary.
 
-However, if you do want to run this application locally, you need to provide an empty test database, according to
-[its connection](https://github.com/vitaly-t/pg-promise-demo/blob/master/db/index.js#L31).
+However, if you do want to run this application locally, you need to build and and run it according to the type of implementation
+that you are interested in. See details on the corresponding pages: [JavaScript] or [TypeScript].
 
-Then you can start it with `node index.js`, and fire away URL commands in a browser, as per the web API implemented
-within [index.js](https://github.com/vitaly-t/pg-promise-demo/blob/master/index.js), while watching what's happening in:
+Once the application is up and running, you can fire away URL commands in a browser, as per the web API that's implemented,
+while watching what's happening in:
 
 * the console output (make sure you have NODE_ENV=`development`)
 * errors log - file `db/errors.log`
@@ -44,5 +43,7 @@ localhost:3000/users/init
 localhost:3000/products/create
 ```
 
+[JavaScript]:https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript
+[TypeScript]:https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript
 [pg-promise]:https://github.com/vitaly-t/pg-promise
 [pg-monitor]:https://github.com/vitaly-t/pg-monitor

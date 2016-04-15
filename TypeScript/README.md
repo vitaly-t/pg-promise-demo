@@ -26,7 +26,7 @@ export=promise;
 
 But if you want to use ES6 Promise instead, then you do not need to change that file, and instead you need: 
 * Node.js 4.x or later, to be able to run ES6 JavaScript
-* Instead of `tsc index` command use `$ tsc index --target es6 --module commonjs`.
+* Instead of `$ tsc index` command use `$ tsc index --target es6 --module commonjs`.
  
 ### Starting
 

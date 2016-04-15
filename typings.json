@@ -1,8 +1,6 @@
 {
-  "dependencies": {
-    "bluebird": "registry:npm/bluebird#3.3.4+20160411163813"
-  },
   "ambientDependencies": {
+    "bluebird": "registry:dt/bluebird#2.0.0+20160319051630",
     "express": "registry:dt/express#4.0.0+20160317120654",
     "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160322035842",
     "mime": "registry:dt/mime#0.0.0+20160316155526",

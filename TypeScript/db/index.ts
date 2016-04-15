@@ -1,4 +1,3 @@
-/// <reference path='../../typings/main' />
 /// <reference path='../../node_modules/pg-promise/typescript/pg-promise' />
 
 // Bluebird is the best promise library available today,

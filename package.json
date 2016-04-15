@@ -26,7 +26,7 @@
     "npm": ">=1.4"
   },
   "dependencies": {
-    "bluebird": "3.x",
+    "bluebird": "2.x",
     "express": "4.x",
     "pg-promise": "^3.8.1",
     "pg-monitor": "^0.5.1"

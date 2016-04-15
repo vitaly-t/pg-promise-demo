@@ -1,4 +1,4 @@
-/// <reference path='../external/node' />
+/// <reference path='../../typings/main' />
 /// <reference path='../../node_modules/pg-monitor/typescript/pg-monitor' />
 
 // In this example we are showing how to properly use pg-monitor to log

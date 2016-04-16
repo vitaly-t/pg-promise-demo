@@ -15,12 +15,13 @@ module.exports = rep => {
         create: () => rep.none(sql.create),
 
         // Initializes the table with some user records, and return their id-s;
+        //
+        // When we execute more than one insert, we should use a transaction, although
+        // in this particular example we use a single concatenated insert, so a transaction
+        // isn't really needed. It is here just as an example.
+        //
+        // Also, giving names to your tasks and transactions is a reliable way to track their errors.
         init: () =>
-            // When we execute more than one insert, we should use a transaction, although in this
-            // particular example we use a single concatenated insert, so transaction isn't needed.
-            // It is here just as an example.
-            //
-            // Also, giving your tasks and transactions names is a reliable way to track their errors.
             rep.tx('Demo-Users', t =>
                 t.any(sql.init)
                     .then(data => data.map(m => m.id))
@@ -43,7 +44,7 @@ module.exports = rep => {
         // Tries to find a user from id;
         find: id => rep.oneOrNone('SELECT * FROM Users WHERE id = $1', id),
 
-        // Returns all the records;
+        // Returns all user records;
         all: () => rep.any('SELECT * FROM Users'),
 
         // Returns the total number of users;

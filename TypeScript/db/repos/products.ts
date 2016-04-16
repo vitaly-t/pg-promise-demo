@@ -25,8 +25,8 @@ export class Repository {
     empty = () => this.db.none(sql.empty);
 
     // Adds a new record and returns the new id;
+    // It is also an example of mapping HTTP requests directly into query parameters;
     add = values =>
-        // example of mapping HTTP requests directly into our our query formatting parameters;
         this.db.one(sql.add, values)
             .then(user => user.id);
 
@@ -37,7 +37,7 @@ export class Repository {
     // Tries to find a product from id;
     find = id => this.db.oneOrNone('SELECT * FROM Products WHERE id = $1', id);
 
-    // Returns all the records;
+    // Returns all product records;
     all = () => this.db.any('SELECT * FROM Products');
 
     // Returns the total number of products;

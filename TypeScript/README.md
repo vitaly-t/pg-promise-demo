@@ -15,7 +15,7 @@
 
 In order to make your local copy use Bluebird as the promise library:
 
-* Open file `node_modules/pg-promise/typescript/promise.ts`
+* Open file `node_modules/pg-promise/typescript/ext-promise.ts`
 * Add before the namespace: `/// <reference path='../../../typings/main' />`
 * Replace line `export=Promise;` with the following:
 

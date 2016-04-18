@@ -1,7 +1,6 @@
 /// <reference path='../../node_modules/pg-promise/typescript/pg-promise' />
 
-// Bluebird is the best promise library available today,
-// and is the one recommended here:
+// Bluebird is the best promise library available today, and is the one recommended here:
 import * as promise from 'bluebird';
 
 import users = require('./repos/users');
@@ -15,7 +14,9 @@ interface IExtensions {
 // pg-promise initialization options:
 var options = {
 
-    // Use a custom promise library, instead of the default ES6 Promise:
+    // Using a custom promise library, instead of the default ES6 Promise.
+    // To make the custom promise protocol visible, you need to patch the
+    // following file: node_modules/pg-promise/typescript/ext-promise.ts
     promiseLib: promise,
 
     // Extending the database protocol with our custom repositories:
@@ -34,7 +35,7 @@ var config = {
     user: 'postgres'
 };
 
-// Load and initialize pg-promise:
+// Loading and initializing pg-promise:
 import * as pgPromise from 'pg-promise';
 var pgp = pgPromise(options);
 

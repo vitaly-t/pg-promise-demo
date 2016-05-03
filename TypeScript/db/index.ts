@@ -16,7 +16,7 @@ var options = {
 
     // Using a custom promise library, instead of the default ES6 Promise.
     // To make the custom promise protocol visible, you need to patch the
-    // following file: node_modules/pg-promise/typescript/ext-promise.ts
+    // following file: node_modules/pg-promise/typescript/ext-promise.d.ts
     promiseLib: promise,
 
     // Extending the database protocol with our custom repositories:

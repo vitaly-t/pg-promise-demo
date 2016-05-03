@@ -13,11 +13,10 @@ function sql(file) {
         // see also option 'compress' in the API;
         minify: true,
 
-        // Support for 'params' was added in pg-promise 3.2.0;
         params: {
             // Showing how to use static pre-formatting parameters -
             // variable 'schema' in each SQL, just as an example;
-
+            
             schema: 'public' // 'public' is the default schema
         }
     };

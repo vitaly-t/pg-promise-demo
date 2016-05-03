@@ -2,7 +2,7 @@
 
 import {QueryFile} from 'pg-promise';
 
-// Helper for binding to external query files;
+// Helper for linking to external query files;
 function sql(file) {
 
     var path = './db/sql/' + file;

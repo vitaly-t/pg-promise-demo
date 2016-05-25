@@ -22,10 +22,7 @@ module.exports = rep => {
         //
         // Also, giving names to your tasks and transactions is a reliable way to track their errors.
         init: () =>
-            rep.tx('Demo-Users', t =>
-                t.any(sql.init)
-                    .then(data => data.map(m => m.id))
-            ),
+            rep.tx('Demo-Users', t => t.map(sql.init, null, row => row.id)),
 
         // Drops the table;
         drop: () => rep.none(sql.drop),

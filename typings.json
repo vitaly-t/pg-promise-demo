@@ -1,10 +1,11 @@
 {
-  "ambientDependencies": {
+  "globalDependencies": {
     "bluebird": "registry:dt/bluebird#2.0.0+20160319051630",
     "express": "registry:dt/express#4.0.0+20160317120654",
     "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160322035842",
     "mime": "registry:dt/mime#0.0.0+20160316155526",
     "node": "registry:dt/node#4.0.0+20160412142033",
-    "serve-static": "registry:dt/serve-static#1.7.1+20160104095738"
+    "serve-static": "registry:dt/serve-static#1.7.1+20160104095738",
+    "pg-promise": "github:vitaly-t/pg-promise"
   }
 }

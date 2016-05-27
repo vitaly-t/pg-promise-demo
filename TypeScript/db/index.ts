@@ -1,4 +1,4 @@
-/// <reference path='../../node_modules/pg-promise/typescript/pg-promise' />
+/// <reference path='../../typings/index' />
 
 // Bluebird is the best promise library available today, and is the one recommended here:
 import * as promise from 'bluebird';

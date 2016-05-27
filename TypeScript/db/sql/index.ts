@@ -1,4 +1,4 @@
-/// <reference path='../../../node_modules/pg-promise/typescript/pg-promise' />
+/// <reference path='../../../typings/index' />
 
 import {QueryFile} from 'pg-promise';
 

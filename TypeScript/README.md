@@ -2,7 +2,7 @@
 
 ### Prerequisites
 
-* Node.js version 0.10.x or later
+* Node.js version 0.11.x or later
 * TypeScript, which you can install globally via command `npm install typescript -g`
 * Typings, which you can install globally via command `npm install typings -g`
 
@@ -13,21 +13,6 @@
 * Install Node.js dependencies by running `npm install` from the project's root folder
 * Install TypeScript dependencies by running `typings install` from the project's root folder
 
-In order to make your local copy use Bluebird as the promise library:
-
-* Open file `node_modules/pg-promise/typescript/ext-promise.ts`
-* Add before the namespace: `/// <reference path='../../../typings/main' />`
-* Replace line `export=Promise;` with the following:
-
-```ts
-import * as promise from 'bluebird';
-export=promise;
-```
-
-But if you want to use ES6 Promise instead, then you do not need to change that file, and instead you need: 
-* Node.js 4.x or later, to be able to run ES6 JavaScript
-* Instead of `$ tsc index` command use `$ tsc index --target es6 --module commonjs`.
- 
 ### Starting
 
 Navigate to the projects's root folder:
@@ -37,11 +22,10 @@ $ cd TypeScript
 
 Compile TypeScript into JavaScript:
 ```
-$ tsc index
+$ tsc index --target es6 --module commonjs
 ```
 
 Run the application:
 ```
 $ node index.js
 ```
- 

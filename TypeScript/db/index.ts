@@ -20,7 +20,7 @@ var options = {
     promiseLib: promise,
 
     // Extending the database protocol with our custom repositories:
-    extend: obj => {
+    extend: (obj:any) => {
         obj.users = new users.Repository(obj);
         obj.products = new products.Repository(obj);
     }

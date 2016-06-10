@@ -12,7 +12,8 @@ module.exports = rep => {
     return {
 
         // Creates the table;
-        create: () => rep.none(sql.create),
+        create: () =>
+            rep.none(sql.create),
 
         // Initializes the table with some user records, and return their id-s;
         //
@@ -25,28 +26,31 @@ module.exports = rep => {
             rep.tx('Demo-Users', t => t.map(sql.init, null, row => row.id)),
 
         // Drops the table;
-        drop: () => rep.none(sql.drop),
+        drop: () =>
+            rep.none(sql.drop),
 
         // Removes all records from the table;
-        empty: () => rep.none(sql.empty),
+        empty: () =>
+            rep.none(sql.empty),
 
         // Adds a new user, and returns the new id;
-        add: name => rep.one(sql.add, name)
-            .then(user => user.id),
+        add: name =>
+            rep.one(sql.add, name, user => user.id),
 
         // Tries to delete a user by id, and returns the number of records deleted;
-        remove: id => rep.result('DELETE FROM Users WHERE id = $1', id)
-            .then(result => result.rowCount),
+        remove: id =>
+            rep.result('DELETE FROM Users WHERE id = $1', id, r => r.rowCount),
 
         // Tries to find a user from id;
-        find: id => rep.oneOrNone('SELECT * FROM Users WHERE id = $1', id),
+        find: id =>
+            rep.oneOrNone('SELECT * FROM Users WHERE id = $1', id),
 
         // Returns all user records;
-        all: () => rep.any('SELECT * FROM Users'),
+        all: () =>
+            rep.any('SELECT * FROM Users'),
 
         // Returns the total number of users;
-        total: () => rep.one('SELECT count(*) FROM Users')
-            .then(data => parseInt(data.count))
-
+        total: () =>
+            rep.one('SELECT count(*) FROM Users', [], data => parseInt(data.count))
     };
 };

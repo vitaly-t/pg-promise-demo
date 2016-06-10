@@ -16,7 +16,8 @@ export class Repository {
     private db:any;
 
     // Creates the table;
-    create = () =>this.db.none(sql.create);
+    create = () =>
+        this.db.none(sql.create);
 
     // Initializes the table with some user records, and return their id-s;
     //
@@ -29,26 +30,30 @@ export class Repository {
         this.db.tx('Demo-Users', (t:any) => t.map(sql.init, null, (row:any) => row.id));
 
     // Drops the table;
-    drop = () => this.db.none(sql.drop);
+    drop = () =>
+        this.db.none(sql.drop);
 
     // Removes all records from the table;
-    empty = () => this.db.none(sql.empty);
+    empty = () =>
+        this.db.none(sql.empty);
 
     // Adds a new user, and returns the new id;
-    add = (name:string) => this.db.one(sql.add, name)
-        .then((user:any) => user.id);
+    add = (name:string) =>
+        this.db.one(sql.add, name, (user:any) => user.id);
 
     // Tries to delete a user by id, and returns the number of records deleted;
-    remove = (id:number) => this.db.result('DELETE FROM Users WHERE id = $1', id)
-        .then((result:any) => result.rowCount);
+    remove = (id:number) =>
+        this.db.result('DELETE FROM Users WHERE id = $1', id, (r:any)=>r.rowCount);
 
     // Tries to find a user from id;
-    find = (id:number) => this.db.oneOrNone('SELECT * FROM Users WHERE id = $1', id);
+    find = (id:number) =>
+        this.db.oneOrNone('SELECT * FROM Users WHERE id = $1', id);
 
     // Returns all user records;
-    all = () => this.db.any('SELECT * FROM Users');
+    all = () =>
+        this.db.any('SELECT * FROM Users');
 
     // Returns the total number of users;
-    total = () => this.db.one('SELECT count(*) FROM Users')
-        .then((data:any) => parseInt(data.count));
+    total = () =>
+        this.db.one('SELECT count(*) FROM Users', [], (a:any)=>parseInt(a.count));
 }

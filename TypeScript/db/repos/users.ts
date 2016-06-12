@@ -1,4 +1,4 @@
-/// <reference path='../../../typings/index' />
+/// <reference path='../../../typings/index.d.ts' />
 
 import {IDatabase} from 'pg-promise';
 import sqlProvider = require('../sql');

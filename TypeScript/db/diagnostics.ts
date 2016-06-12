@@ -1,4 +1,4 @@
-/// <reference path='../../typings/index' />
+/// <reference path='../../typings/index.d.ts' />
 
 // In this example we are showing how to properly use pg-monitor to log
 // errors in a DEV and PROD environments.

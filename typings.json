@@ -6,7 +6,8 @@
     "mime": "registry:dt/mime#0.0.0+20160316155526",
     "node": "registry:dt/node#4.0.0+20160412142033",
     "serve-static": "registry:dt/serve-static#1.7.1+20160104095738",
-    "pg-promise": "github:vitaly-t/pg-promise#a2805a80c0e8b91e6936b7901dd825d446649722",
-    "pg-monitor": "github:vitaly-t/pg-monitor#574ab06fecdbd1a5a00f778eed0411c22359041a"
+    "pg-promise": "github:vitaly-t/pg-promise#ed322f9146f8a09293aba54e97d4aab44849ed33",
+    "pg-monitor": "github:vitaly-t/pg-monitor#d3e0fd95662338076309e3091b4ff2e5dcddaf29",
+    "spex": "github:vitaly-t/spex"
   }
 }

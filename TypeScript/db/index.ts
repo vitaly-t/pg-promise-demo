@@ -21,8 +21,12 @@ var options = {
 
     // Extending the database protocol with our custom repositories:
     extend: (obj:any) => {
-        obj.users = new users.Repository(obj);
-        obj.products = new products.Repository(obj);
+        // 1. Do not load repositories here, because this event occurs for every task
+        //    and transaction being executed, which should be as fast as possible.
+        // 2. We pass in `pgp` in case it is needed when implementing the repository;
+        //    for example, to access namespaces `.as` or `.helpers`
+        obj.users = new users.Repository(obj, pgp);
+        obj.products = new products.Repository(obj, pgp);
     }
 
 };

@@ -28,7 +28,7 @@
   "dependencies": {
     "bluebird": "3.x",
     "express": "4.x",
-    "pg-promise": "^5.0.1",
-    "pg-monitor": "^0.5.10"
+    "pg-promise": "^5.0.3",
+    "pg-monitor": "^0.5.11"
   }
 }

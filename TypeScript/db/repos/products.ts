@@ -1,6 +1,6 @@
 /// <reference path='../../../typings/index' />
 
-import {IDatabase} from 'pg-promise';
+import {IDatabase, IMain} from 'pg-promise';
 import sqlProvider = require('../sql');
 
 var sql = sqlProvider.products;
@@ -12,13 +12,16 @@ var sql = sqlProvider.products;
 
 export class Repository {
 
-    constructor(db:any) {
+    constructor(db:any, pgp:IMain) {
         this.db = db;
+        this.pgp = pgp;
     }
-
+    
     // if you need to access other repositories from here,
     // you will have to replace 'IDatabase<any>' with 'any':
     private db:IDatabase<any>;
+
+    private pgp:IMain;
 
     // Creates the table;
     create = () =>

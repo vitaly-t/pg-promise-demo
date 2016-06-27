@@ -2,7 +2,7 @@
 
 var sql = require('../sql').users;
 
-module.exports = rep => {
+module.exports = (rep, pgp) => {
 
     /*
      This repository mixes hard-coded and dynamic SQL,

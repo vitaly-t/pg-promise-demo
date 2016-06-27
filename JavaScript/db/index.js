@@ -16,13 +16,15 @@ var options = {
 
     // Use a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
-
+    
     // Extending the database protocol with our custom repositories:
     extend: obj => {
-        // Do not use 'require()' here, because this event occurs for every task
-        // and transaction being executed, which should be as fast as possible.
-        obj.users = repos.users(obj);
-        obj.products = repos.products(obj);
+        // 1. Do not use 'require()' here, because this event occurs for every task
+        //    and transaction being executed, which should be as fast as possible.
+        // 2. We pass in `pgp` in case it is needed when implementing the repository;
+        //    for example, to access namespaces `.as` or `.helpers`
+        obj.users = repos.users(obj, pgp);
+        obj.products = repos.products(obj, pgp);
     }
 
 };
@@ -49,11 +51,11 @@ diag.init(options);
 // pgp.pg.defaults.poolSize = 20;
 
 module.exports = {
-    
+
     // Library instance is often necessary to access all the useful
     // types and namespaces available within the library's root:
     pgp,
-    
+
     // Database instance. Only one instance per database is needed
     // within any application.
     db

@@ -1,4 +1,4 @@
-/// <reference path='../../../typings/index' />
+/// <reference path='../../../typings/index.d.ts' />
 
 import {QueryFile} from 'pg-promise';
 

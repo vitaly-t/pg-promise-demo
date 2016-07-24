@@ -29,10 +29,10 @@ GET('/users/drop', () => db.users.drop());
 GET('/users/add/:name', req => db.users.add(req.params.name));
 
 // find a user by id:
-GET('/users/find/:id', req => db.users.find(parseInt(req.params.id)));
+GET('/users/find/:id', req => db.users.find(+req.params.id));
 
 // remove a user by id:
-GET('/users/remove/:id', req => db.users.remove(parseInt(req.params.id)));
+GET('/users/remove/:id', req => db.users.remove(+req.params.id));
 
 // get all users:
 GET('/users/all', () => db.users.all());
@@ -55,15 +55,15 @@ GET('/products/empty', () => db.products.empty());
 
 // add a new product with user Id and name:
 GET('/products/add/:userId/:name', req => db.products.add({
-    userId: parseInt(req.params.userId),
+    userId: +req.params.userId,
     name: req.params.name
 }));
 
 // find a product by id:
-GET('/products/find/:id', req => db.products.find(parseInt(req.params.id)));
+GET('/products/find/:id', req => db.products.find(+req.params.id));
 
 // remove a product by id:
-GET('/products/remove/:id', req => db.products.remove(parseInt(req.params.id)));
+GET('/products/remove/:id', req => db.products.remove(+req.params.id));
 
 // get all products:
 GET('/products/all', () => db.products.all());

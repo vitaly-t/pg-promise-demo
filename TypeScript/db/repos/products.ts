@@ -16,7 +16,7 @@ export class Repository {
         this.db = db;
         this.pgp = pgp;
     }
-    
+
     // if you need to access other repositories from here,
     // you will have to replace 'IDatabase<any>' with 'any':
     private db:IDatabase<any>;
@@ -54,5 +54,5 @@ export class Repository {
 
     // Returns the total number of products;
     total = () =>
-        this.db.one('SELECT count(*) FROM Products', [], (data:any) => parseInt(data.count));
+        this.db.one('SELECT count(*) FROM Products', [], (data:any) => +data.count);
 }

@@ -42,6 +42,6 @@ module.exports = (rep, pgp) => {
 
         // Returns the total number of products;
         total: () =>
-            rep.one('SELECT count(*) FROM Products', [], data => parseInt(data.count))
+            rep.one('SELECT count(*) FROM Products', [], a => +a.count)
     };
 };

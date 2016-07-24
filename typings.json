@@ -6,9 +6,8 @@
     "mime": "registry:dt/mime#0.0.0+20160316155526",
     "node": "registry:dt/node#6.0.0+20160621231320",
     "pg-monitor": "github:vitaly-t/pg-monitor#95fa7017e58c3f78dfa504faa5aed8f63d5959f5",
-    "pg-promise": "github:vitaly-t/pg-promise#f9654c9af5b64dbb67615834181dde331ed842b2",
-    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",
-    "spex": "github:vitaly-t/spex#ab9664071f1760ea57bff69d306512203312b85d"
+    "pg-promise": "github:vitaly-t/pg-promise#3e90ebe1a0a7a7c89813449bbaf7ee5368620b8f",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157"
   },
   "dependencies": {
     "bluebird": "registry:npm/bluebird#3.3.4+20160622205516"

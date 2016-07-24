@@ -51,6 +51,6 @@ module.exports = (rep, pgp) => {
 
         // Returns the total number of users;
         total: () =>
-            rep.one('SELECT count(*) FROM Users', [], data => parseInt(data.count))
+            rep.one('SELECT count(*) FROM Users', [], a => +a.count)
     };
 };

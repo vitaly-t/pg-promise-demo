@@ -63,5 +63,5 @@ export class Repository {
 
     // Returns the total number of users;
     total = () =>
-        this.db.one('SELECT count(*) FROM Users', [], (a:any)=>parseInt(a.count));
+        this.db.one('SELECT count(*) FROM Users', [], (a:any) => +a.count);
 }

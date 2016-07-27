@@ -4,9 +4,7 @@
     "express": "registry:dt/express#4.0.0+20160317120654",
     "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160625155614",
     "mime": "registry:dt/mime#0.0.0+20160316155526",
-    "node": "registry:dt/node#6.0.0+20160621231320",
     "pg-monitor": "github:vitaly-t/pg-monitor#95fa7017e58c3f78dfa504faa5aed8f63d5959f5",
-    "pg-promise": "github:vitaly-t/pg-promise#3e90ebe1a0a7a7c89813449bbaf7ee5368620b8f",
     "serve-static": "registry:dt/serve-static#0.0.0+20160606155157"
   },
   "dependencies": {

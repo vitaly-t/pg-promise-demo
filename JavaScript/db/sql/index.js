@@ -1,11 +1,12 @@
 'use strict';
 
 var QueryFile = require('pg-promise').QueryFile;
+var path = require('path');
 
 // Helper for linking to external query files;
 function sql(file) {
 
-    var path = './db/sql/' + file;
+    var fullPath = path.join(__dirname, file); // generating full path;
 
     var options = {
 
@@ -16,11 +17,11 @@ function sql(file) {
         // Showing how to use static pre-formatting parameters -
         // we have variable 'schema' in each SQL (as an example);
         params: {
-            schema: 'public' // replace ${schema} with "public"
+            schema: 'public' // replace ${schema~} with "public"
         }
     };
 
-    return new QueryFile(path, options);
+    return new QueryFile(fullPath, options);
 
     // See QueryFile API:
     // http://vitaly-t.github.io/pg-promise/QueryFile.html
@@ -59,3 +60,22 @@ module.exports = {
         add: sql('products/add.sql')
     }
 };
+
+//////////////////////////////////////////////////////////////////////////
+// Consider an alternative - enumerating all SQL files automatically ;)
+// API: http://vitaly-t.github.io/pg-promise/utils.html#.enumSql
+
+/*
+// generating a recursive SQL tree for dynamic use of camelized names:
+var enumSql = require('pg-promise').utils.enumSql;
+
+module.exports = enumSql(__dirname, {recursive: true}, file=> {
+    // NOTE: 'file' contains the full path to the SQL file, because we use __dirname for enumeration.
+    return new QueryFile(file, {
+        minify: true,
+        params: {
+            schema: 'public' // replace ${schema~} with "public"
+        }
+    });
+});
+*/

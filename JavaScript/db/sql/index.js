@@ -38,8 +38,8 @@ function sql(file) {
 //   out in the query file.
 //
 // In fact, the only reason one might want to keep a query in-line within the code is to be able
-// to easily see the relation between the query and its formatting parameters. However, this is
-// very easy to overcome by using only Named Parameters for your query formatting.
+// to easily see the relation between the query logic and its formatting parameters. However, this
+// is very easy to overcome by using only Named Parameters for your query formatting.
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 // We import only a few queries here, while using the rest in-line in the code, only to provide a

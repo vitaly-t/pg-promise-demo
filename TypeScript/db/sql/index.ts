@@ -1,5 +1,3 @@
-/// <reference path='../../../node_modules/pg-promise/typescript/pg-promise' />
-
 import {QueryFile} from 'pg-promise';
 var path = require('path');
 

@@ -1,13 +1,12 @@
 {
   "name": "pg-promise-demo",
   "globalDependencies": {
-    "express": "registry:dt/express#4.0.0+20160317120654",
-    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160625155614",
-    "mime": "registry:dt/mime#0.0.0+20160316155526",
-    "pg-monitor": "github:vitaly-t/pg-monitor#95fa7017e58c3f78dfa504faa5aed8f63d5959f5",
-    "serve-static": "registry:dt/serve-static#0.0.0+20160606155157"
+    "express": "registry:dt/express",
+    "express-serve-static-core": "registry:dt/express-serve-static-core",
+    "mime": "registry:dt/mime",
+    "serve-static": "registry:dt/serve-static"
   },
   "dependencies": {
-    "bluebird": "registry:npm/bluebird#3.3.4+20160622205516"
+    "bluebird": "registry:npm/bluebird"
   }
 }

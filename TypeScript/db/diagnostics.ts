@@ -1,6 +1,3 @@
-/// <reference path='../../typings/index' />
-/// <reference path='../../node_modules/pg-promise/typescript/pg-promise' />
-
 // In this example we are showing how to properly use pg-monitor to log
 // errors in a DEV and PROD environments.
 
@@ -11,7 +8,7 @@
 
 import os = require('os');
 import fs = require('fs');
-import * as pgMonitor from 'pg-monitor';
+import {pgMonitor} from 'pg-monitor';
 
 pgMonitor.setTheme('matrix'); // changing the default theme;
 

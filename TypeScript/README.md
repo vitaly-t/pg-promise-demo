@@ -1,9 +1,9 @@
-## TypeScript implementation of pg-promise-demo
+## TypeScript 2.0 implementation of pg-promise-demo
 
 ### Prerequisites
 
-* Node.js version 0.11.x or later
-* TypeScript, which you can install globally via command `npm install typescript -g`
+* Node.js version 4.x or later
+* TypeScript 2.x, which you can install globally via command `npm install typescript -g`
 * Typings, which you can install globally via command `npm install typings -g`
 
 ### Installation
@@ -18,11 +18,6 @@
 Navigate to the projects's root folder:
 ```
 $ cd TypeScript
-```
-
-Compile TypeScript into JavaScript:
-```
-$ tsc index --target es6 --module commonjs
 ```
 
 Run the application:

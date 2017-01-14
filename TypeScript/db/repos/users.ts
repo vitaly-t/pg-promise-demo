@@ -10,9 +10,9 @@ var sql = sqlProvider.users;
 
 export class Repository {
 
-    constructor(db:any, pgp:IMain) {
+    constructor(db:any, pgp: IMain) {
         this.db = db;
-        this.pgp = pgp;
+        this.pgp = pgp; // library's root, if ever needed;
     }
 
     // if you need to access other repositories from here,

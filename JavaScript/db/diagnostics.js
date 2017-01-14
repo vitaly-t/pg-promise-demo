@@ -25,7 +25,7 @@ var logFile = './db/errors.log';
 // necessary details for that.
 //
 // see: https://github.com/vitaly-t/pg-monitor#log
-monitor.log = (msg, info) => {
+monitor.setLog((msg, info) => {
 
     // In a PROD environment we will only receive event 'error',
     // because this is how we set it up below.
@@ -58,7 +58,7 @@ monitor.log = (msg, info) => {
         info.display = false; // display nothing;
     }
 
-};
+});
 
 var attached = false;
 

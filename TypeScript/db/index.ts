@@ -7,8 +7,8 @@ import users = require('./repos/users');
 import products = require('./repos/products');
 
 interface IExtensions {
-    users:users.Repository,
-    products:products.Repository
+    users: users.Repository,
+    products: products.Repository
 }
 
 // pg-promise initialization options:
@@ -20,11 +20,9 @@ var options = {
     promiseLib: promise,
 
     // Extending the database protocol with our custom repositories:
-    extend: (obj:any) => {
-        // 1. Do not load repositories here, because this event occurs for every task
-        //    and transaction being executed, which should be as fast as possible.
-        // 2. We pass in `pgp` in case it is needed when implementing the repository;
-        //    for example, to access namespaces `.as` or `.helpers`
+    extend: (obj: any) => {
+        // Do not use 'require()' here, because this event occurs for every task
+        // and transaction being executed, which should be as fast as possible.
         obj.users = new users.Repository(obj, pgp);
         obj.products = new products.Repository(obj, pgp);
     }
@@ -41,25 +39,20 @@ var config = {
 
 // Loading and initializing pg-promise:
 import * as pgPromise from 'pg-promise';
-var pgp:IMain = pgPromise(options);
+var pgp: IMain = pgPromise(options);
 
 // Create the database instance with extensions:
 var db = <IDatabase<IExtensions>&IExtensions>pgp(config);
 
-// Load and initialize all the diagnostics:
+// Load and initialize optional diagnostics:
 import diag = require('./diagnostics');
 diag.init(options);
 
 // If you ever need to change the default pool size, here's an example:
 // pgp.pg.defaults.poolSize = 20;
 
-export = {
-
-    // Library instance is often necessary to access all the useful
-    // types and namespaces available within the library's root:
-    pgp,
-
-    // Database instance. Only one instance per database is needed
-    // within any application.
-    db
-};
+// Database object is all that's needed.
+// And if you even need access to the library's root (pgp object),
+// you can do it via db.$config.pgp
+// See: http://vitaly-t.github.io/pg-promise/Database.html#.$config
+export = db;

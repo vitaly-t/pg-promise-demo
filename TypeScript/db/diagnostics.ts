@@ -8,7 +8,7 @@
 
 import os = require('os');
 import fs = require('fs');
-import {pgMonitor} from 'pg-monitor';
+import * as pgMonitor from 'pg-monitor';
 
 pgMonitor.setTheme('matrix'); // changing the default theme;
 
@@ -23,7 +23,7 @@ var logFile = './db/errors.log';
 // necessary details for that.
 //
 // see: https://github.com/vitaly-t/pg-monitor#log
-pgMonitor.log = (msg, info) => {
+pgMonitor.setLog((msg, info) => {
 
     // In a PROD environment we will only receive event 'error',
     // because this is how we set it up below.
@@ -56,7 +56,7 @@ pgMonitor.log = (msg, info) => {
         info.display = false; // display nothing;
     }
 
-};
+});
 
 var attached = false;
 

@@ -3,7 +3,7 @@ pg-promise-demo
 
 This is an advanced demo of the best practices of using [pg-promise], and managing your database architecture.
 
-It shows how to organize an enterprise-level database application, with consideration for ever-growing database complexity.
+It shows how to organize an enterprise-level database application, with consideration for ever-growing complexity of the database and queries.
 
 Database aspects implemented in the demo:
 

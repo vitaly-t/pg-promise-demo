@@ -19,10 +19,17 @@ var options = {
 
     // Extending the database protocol with our custom repositories:
     extend: obj => {
+
         // Do not use 'require()' here, because this event occurs for every task
         // and transaction being executed, which should be as fast as possible.
         obj.users = repos.users(obj, pgp);
         obj.products = repos.products(obj, pgp);
+
+        // Alternatively, you can set all repositories in a loop:
+        //
+        // for (var r in repos) {
+        //    obj[r] = repos[r](obj, pgp);
+        // }
     }
 
 };

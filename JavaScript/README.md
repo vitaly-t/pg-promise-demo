@@ -9,7 +9,7 @@ However, you can easily follow the same pattern with ES5 syntax, as [pg-promise]
 
 ### Installation
 
-* Set up an empty test database, according to the connection details in file [JavaScript/db/index.js](https://github.com/vitaly-t/pg-promise-demo/blob/master/JavaScript/db/index.js#38),
+* Set up an empty test database, according to the connection details in file [JavaScript/db/index.js](https://github.com/vitaly-t/pg-promise-demo/blob/master/JavaScript/db/index.js#L38),
   which you can also change to fit your test environment.
 * Install Node.js dependencies by running `npm install` from the project's root folder
 

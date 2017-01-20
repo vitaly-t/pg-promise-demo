@@ -27,4 +27,4 @@ Run the application:
 $ node index.js
 ```
 
-[pg-promise]:https://github.com/vitaly-t/pg-promise-demo
+[pg-promise]:https://github.com/vitaly-t/pg-promise

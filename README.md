@@ -5,12 +5,12 @@ This is an advanced demo of the best practices of using [pg-promise], and managi
 
 It shows how to organize an enterprise-level database application, with consideration for ever-growing complexity of the database and queries.
 
-Database aspects implemented in the demo:
+The demo focuses on the following:
 
 * The best way to organize your database module
-* How to implement and use database repositories
-* How to organize, initialize and use SQL files
-* Efficient diagnostics and errors reporting
+* Use of the repositories pattern for your database
+* Efficient use of queries via external SQL files
+* Query monitoring and error diagnostics
 
 The demo includes two separate implementations, with identical functionality:
 

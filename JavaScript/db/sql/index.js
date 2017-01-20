@@ -57,9 +57,9 @@ function sql(file) {
 
     if (qf.error) {
         // Something is wrong with our query file :(
-        // Testing each file through queries can be cumbersome,
+        // Testing all files through queries can be cumbersome,
         // so we also report it here, while loading the module:
-        console.log(qf.error);
+        console.error(qf.error);
     }
 
     return qf;

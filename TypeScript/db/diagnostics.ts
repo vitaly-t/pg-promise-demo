@@ -63,7 +63,7 @@ var attached = false;
 export = {
 
     // Monitor initialization function;
-    init: (options:any) => {
+    init: (options: any) => {
 
         // We are checking to avoid calling 'attach' more than once,
         // without calling 'detach', as it will throw an error;

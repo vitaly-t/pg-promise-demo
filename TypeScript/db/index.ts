@@ -2,7 +2,8 @@
 
 // Bluebird is the best promise library available today, and is the one recommended here:
 import * as promise from 'bluebird';
-import {IMain, IDatabase} from 'pg-promise';
+import {IMain, IDatabase, IOptions} from 'pg-promise';
+
 import users = require('./repos/users');
 import products = require('./repos/products');
 
@@ -12,7 +13,7 @@ interface IExtensions {
 }
 
 // pg-promise initialization options:
-var options = {
+var options: IOptions<IExtensions> = {
 
     // Using a custom promise library, instead of the default ES6 Promise.
     // To make the custom promise protocol visible, you need to patch the
@@ -20,7 +21,7 @@ var options = {
     promiseLib: promise,
 
     // Extending the database protocol with our custom repositories:
-    extend: (obj: any) => {
+    extend: (obj: IExtensions) => {
         // Do not use 'require()' here, because this event occurs for every task
         // and transaction being executed, which should be as fast as possible.
         obj.users = new users.Repository(obj, pgp);

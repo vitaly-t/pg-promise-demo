@@ -1,4 +1,4 @@
-import {QueryFile} from 'pg-promise';
+import {QueryFile, TQueryFileOptions} from 'pg-promise';
 var path = require('path');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,11 +34,11 @@ export = {
 
 ///////////////////////////////////////////////
 // Helper for linking to external query files;
-function sql(file) {
+function sql(file: string): QueryFile {
 
-    var fullPath = path.join(__dirname, file); // generating full path;
+    var fullPath: string = path.join(__dirname, file); // generating full path;
 
-    var options = {
+    var options: TQueryFileOptions = {
 
         // minifying the SQL is always advised;
         // see also option 'compress' in the API;
@@ -51,7 +51,7 @@ function sql(file) {
         }
     };
 
-    var qf = new QueryFile(fullPath, options);
+    var qf: QueryFile = new QueryFile(fullPath, options);
 
     if (qf.error) {
         // Something is wrong with our query file :(
@@ -69,7 +69,6 @@ function sql(file) {
 //////////////////////////////////////////////////////////////////////////
 // Consider an alternative - enumerating all SQL files automatically ;)
 // API: http://vitaly-t.github.io/pg-promise/utils.html#.enumSql
-
 /*
 // generating a recursive SQL tree for dynamic use of camelized names:
 import {utils} from 'pg-promise';
@@ -84,4 +83,3 @@ export = utils.enumSql(__dirname, {recursive: true}, file => {
     });
 });
 */
-

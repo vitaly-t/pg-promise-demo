@@ -16,14 +16,8 @@ module.exports = (rep, pgp) => {
             rep.none(sql.create),
 
         // Initializes the table with some user records, and return their id-s;
-        //
-        // When we execute more than one insert, we should use a transaction, although
-        // in this particular example we use a single concatenated insert, so a transaction
-        // isn't really needed. It is here just as an example.
-        //
-        // Also, giving names to your tasks and transactions is a reliable way to track their errors.
         init: () =>
-            rep.tx('Demo-Users', t => t.map(sql.init, null, row => row.id)),
+            rep.map(sql.init, [], row => row.id),
 
         // Drops the table;
         drop: () =>

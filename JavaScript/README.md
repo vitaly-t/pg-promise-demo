@@ -1,4 +1,4 @@
-ES6 JavaScript implementation of the demo.
+## ES6 JavaScript implementation of the demo.
 
 ### Prerequisites
 

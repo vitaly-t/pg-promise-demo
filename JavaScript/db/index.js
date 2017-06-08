@@ -17,13 +17,14 @@ var options = {
     // Use a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
 
-    // Extending the database protocol with our custom repositories:
-    extend: obj => {
+    // Extending the database protocol with our custom repositories;
+    // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
+    extend: (obj, dc) => {
 
         // Do not use 'require()' here, because this event occurs for every task
         // and transaction being executed, which should be as fast as possible.
-        obj.users = repos.users(obj, pgp);
-        obj.products = repos.products(obj, pgp);
+        obj.users = new repos.users(obj, pgp);
+        obj.products = new repos.products(obj, pgp);
 
         // Alternatively, you can set all repositories in a loop:
         //
@@ -49,14 +50,9 @@ var pgp = require('pg-promise')(options);
 var db = pgp(config);
 
 // Load and initialize optional diagnostics:
-var diag = require('./diagnostics');
-diag.init(options);
+var diagnostics = require('./diagnostics');
+diagnostics.init(options);
 
-// If you ever need to change the default pool size, here's an example:
-// pgp.pg.defaults.poolSize = 20;
-
-// Database object is all that's needed.
-// If you even need access to the library's root (pgp object),
-// you can do it via db.$config.pgp
+// If you ever need access to the library's root (pgp object), you can do it via db.$config.pgp
 // See: http://vitaly-t.github.io/pg-promise/Database.html#.$config
 module.exports = db;

@@ -20,8 +20,9 @@ var options: IOptions<IExtensions> = {
     // following file: node_modules/pg-promise/typescript/ext-promise.d.ts
     promiseLib: promise,
 
-    // Extending the database protocol with our custom repositories:
-    extend: (obj: IExtensions) => {
+    // Extending the database protocol with our custom repositories;
+    // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
+    extend: (obj: IExtensions, dc: any) => {
         // Do not use 'require()' here, because this event occurs for every task
         // and transaction being executed, which should be as fast as possible.
         obj.users = new users.Repository(obj, pgp);
@@ -40,20 +41,17 @@ var config = {
 
 // Loading and initializing pg-promise:
 import * as pgPromise from 'pg-promise';
+
 var pgp: IMain = pgPromise(options);
 
 // Create the database instance with extensions:
-var db = <IDatabase<IExtensions>&IExtensions>pgp(config);
+var db = <IDatabase<IExtensions> & IExtensions>pgp(config);
 
 // Load and initialize optional diagnostics:
-import diag = require('./diagnostics');
-diag.init(options);
+import diagnostics = require('./diagnostics');
 
-// If you ever need to change the default pool size, here's an example:
-// pgp.pg.defaults.poolSize = 20;
+diagnostics.init(options);
 
-// Database object is all that's needed.
-// And if you even need access to the library's root (pgp object),
-// you can do it via db.$config.pgp
+// If you ever need access to the library's root (pgp object), you can do it via db.$config.pgp
 // See: http://vitaly-t.github.io/pg-promise/Database.html#.$config
 export = db;

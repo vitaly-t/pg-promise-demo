@@ -1,4 +1,5 @@
 import {QueryFile, TQueryFileOptions} from 'pg-promise';
+
 var path = require('path');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,8 +68,9 @@ function sql(file: string): QueryFile {
 }
 
 //////////////////////////////////////////////////////////////////////////
-// Consider an alternative - enumerating all SQL files automatically ;)
+// Possible alternative - enumerating all SQL files automatically ;)
 // API: http://vitaly-t.github.io/pg-promise/utils.html#.enumSql
+
 /*
 // generating a recursive SQL tree for dynamic use of camelized names:
 import {utils} from 'pg-promise';

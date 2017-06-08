@@ -69,7 +69,7 @@ function sql(file) {
 }
 
 //////////////////////////////////////////////////////////////////////////
-// Consider an alternative - enumerating all SQL files automatically ;)
+// Possible alternative - enumerating all SQL files automatically ;)
 // API: http://vitaly-t.github.io/pg-promise/utils.html#.enumSql
 
 /*

@@ -2,46 +2,56 @@
 
 var sql = require('../sql').products;
 
-module.exports = (rep, pgp) => {
+/*
+ This repository mixes hard-coded and dynamic SQL, primarily to show a diverse example of using both.
+ */
 
-    /*
-     This repository mixes hard-coded and dynamic SQL,
-     primarily to show a diverse example of using both.
-     */
+class Repository {
+    constructor(db, pgp) {
+        this.db = db;
+        this.pgp = pgp;
+    }
 
-    return {
+    // Creates the table;
+    create() {
+        return this.db.none(sql.create);
+    }
 
-        // Creates the table;
-        create: () =>
-            rep.none(sql.create),
+    // Drops the table;
+    drop() {
+        return this.db.none(sql.drop);
+    }
 
-        // Drops the table;
-        drop: () =>
-            rep.none(sql.drop),
+    // Removes all records from the table;
+    empty() {
+        return this.db.none(sql.empty);
+    }
 
-        // Removes all records from the table;
-        empty: () =>
-            rep.none(sql.empty),
+    // Adds a new record and returns the new id;
+    // It is also an example of mapping HTTP requests directly into query parameters;
+    add(values) {
+        return this.db.one(sql.add, values, user => user.id);
+    }
 
-        // Adds a new record and returns the new id;
-        // It is also an example of mapping HTTP requests directly into query parameters;
-        add: values =>
-            rep.one(sql.add, values, user => user.id),
+    // Tries to delete a product by id, and returns the number of records deleted;
+    remove(id) {
+        return this.db.result('DELETE FROM Products WHERE id = $1', id, r => r.rowCount);
+    }
 
-        // Tries to delete a product by id, and returns the number of records deleted;
-        remove: id =>
-            rep.result('DELETE FROM Products WHERE id = $1', id, r => r.rowCount),
+    // Tries to find a product from id;
+    find(id) {
+        return this.db.oneOrNone('SELECT * FROM Products WHERE id = $1', id);
+    }
 
-        // Tries to find a product from id;
-        find: id =>
-            rep.oneOrNone('SELECT * FROM Products WHERE id = $1', id),
+    // Returns all product records;
+    all() {
+        return this.db.any('SELECT * FROM Products');
+    }
 
-        // Returns all product records;
-        all: () =>
-            rep.any('SELECT * FROM Products'),
+    // Returns the total number of products;
+    total() {
+        return this.db.one('SELECT count(*) FROM Products', [], a => +a.count);
+    }
+}
 
-        // Returns the total number of products;
-        total: () =>
-            rep.one('SELECT count(*) FROM Products', [], a => +a.count)
-    };
-};
+module.exports = Repository;

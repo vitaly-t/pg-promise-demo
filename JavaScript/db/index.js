@@ -29,7 +29,7 @@ var options = {
         // Alternatively, you can set all repositories in a loop:
         //
         // for (var r in repos) {
-        //    obj[r] = repos[r](obj, pgp);
+        //    obj[r] = new repos[r](obj, pgp);
         // }
     }
 

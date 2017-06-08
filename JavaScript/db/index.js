@@ -20,6 +20,7 @@ var options = {
     // Extending the database protocol with our custom repositories;
     // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
     extend: (obj, dc) => {
+        // Database Context (dc) is only needed when extending multiple databases.
 
         // Do not use 'require()' here, because this event occurs for every task
         // and transaction being executed, which should be as fast as possible.

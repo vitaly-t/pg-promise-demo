@@ -7,7 +7,7 @@ var sql = sqlProvider.users;
  This repository mixes hard-coded and dynamic SQL, primarily to show a diverse example of using both.
  */
 
-export class Repository {
+export class UsersRepository {
 
     constructor(db: any, pgp: IMain) {
         this.db = db;

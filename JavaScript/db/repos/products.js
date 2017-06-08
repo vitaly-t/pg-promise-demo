@@ -6,7 +6,7 @@ var sql = require('../sql').products;
  This repository mixes hard-coded and dynamic SQL, primarily to show a diverse example of using both.
  */
 
-class Repository {
+class ProductsRepository {
     constructor(db, pgp) {
         this.db = db;
         this.pgp = pgp;
@@ -54,4 +54,18 @@ class Repository {
     }
 }
 
-module.exports = Repository;
+/*
+    And if you prefer object prototyping instead, it will work the same.
+
+    EXAMPLES:
+
+    ProductsRepository.prototype.find = function (id) {
+        return this.db.oneOrNone('SELECT * FROM Products WHERE id = $1', id);
+    }
+
+    ProductsRepository.prototype.all = function () {
+        return this.db.any('SELECT * FROM Products');
+    }
+*/
+
+module.exports = ProductsRepository;

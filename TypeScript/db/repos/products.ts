@@ -46,7 +46,7 @@ export class ProductsRepository {
 
     // Tries to delete a product by id, and returns the number of records deleted;
     remove(id: number) {
-        return this.db.result('DELETE FROM products WHERE id = $1', id, (r: any) => r.rowCount);
+        return this.db.result('DELETE FROM products WHERE id = $1', +id, (r: any) => r.rowCount);
     }
 
     // Tries to find a user product from user id + product name;

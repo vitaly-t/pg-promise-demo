@@ -50,7 +50,7 @@ export class ProductsRepository {
     }
 
     // Tries to find a user product from user id + product name;
-    find(values) {
+    find(values: any) {
         return this.db.oneOrNone(sql.find, {
             userId: +values.userId,
             productName: values.name

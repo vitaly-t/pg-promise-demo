@@ -1,6 +1,6 @@
 {
   "name": "pg-promise-demo",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Advanced demo of using pg-promise.",
   "main": "index.js",
   "homepage": "https://github.com/vitaly-t/pg-promise-demo",
@@ -28,7 +28,7 @@
   "dependencies": {
     "bluebird": "3.5",
     "express": "4.x",
-    "pg-promise": "^5.9.0",
+    "pg-promise": "^5.9.1",
     "pg-monitor": "^0.8.0"
   },
   "devDependencies": {

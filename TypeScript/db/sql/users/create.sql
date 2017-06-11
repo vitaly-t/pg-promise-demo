@@ -5,7 +5,7 @@
     to pre-format SQL with static formatting parameters when needs to be.
 */
 
-CREATE TABLE ${schema~}.Users
+CREATE TABLE ${schema~}.users
 (
     id serial PRIMARY KEY,
     name text NOT NULL

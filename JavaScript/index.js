@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 
 // NOTE: We implement only GET handlers here, because:
+//
 // 1. This demo is to be tested by typing URL-s manually in the browser;
 // 2. The demo's focus is on a proper database layer, not a web server.
 
@@ -25,14 +26,21 @@ GET('/users/empty', () => db.users.empty());
 // drop the table:
 GET('/users/drop', () => db.users.drop());
 
-// add a new user with name:
-GET('/users/add/:name', req => db.users.add(req.params.name));
+// add a new user, if it doesn't exist yet, and return the object:
+GET('/users/add/:name', req => {
+    return db.task('add-user', t => {
+        return t.users.findByName(req.params.name)
+            .then(user => {
+                return user || t.users.add(req.params.name);
+            });
+    });
+});
 
 // find a user by id:
-GET('/users/find/:id', req => db.users.find(+req.params.id));
+GET('/users/find/:id', req => db.users.findById(req.params.id));
 
 // remove a user by id:
-GET('/users/remove/:id', req => db.users.remove(+req.params.id));
+GET('/users/remove/:id', req => db.users.remove(req.params.id));
 
 // get all users:
 GET('/users/all', () => db.users.all());
@@ -53,17 +61,21 @@ GET('/products/drop', () => db.products.drop());
 // remove all products:
 GET('/products/empty', () => db.products.empty());
 
-// add a new product with user Id and name:
-GET('/products/add/:userId/:name', req => db.products.add({
-    userId: +req.params.userId,
-    name: req.params.name
-}));
+// add a new user product, if it doesn't exist yet, and return the object:
+GET('/products/add/:userId/:name', req => {
+    return db.task('add-product', t => {
+        return t.products.find(req.params)
+            .then(product => {
+                return product || t.products.add(req.params);
+            });
+    });
+});
 
-// find a product by id:
-GET('/products/find/:id', req => db.products.find(+req.params.id));
+// find a product by user id + product name id:
+GET('/products/find/:userId/:name', req => db.products.find(req.params));
 
 // remove a product by id:
-GET('/products/remove/:id', req => db.products.remove(+req.params.id));
+GET('/products/remove/:id', req => db.products.remove(req.params.id));
 
 // get all products:
 GET('/products/all', () => db.products.all());

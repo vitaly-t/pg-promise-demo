@@ -30,6 +30,7 @@ module.exports = {
         create: sql('products/create.sql'),
         empty: sql('products/empty.sql'),
         drop: sql('products/drop.sql'),
+        find: sql('products/find.sql'),
         add: sql('products/add.sql')
     }
 };

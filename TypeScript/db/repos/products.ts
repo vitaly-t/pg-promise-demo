@@ -35,29 +35,35 @@ export class ProductsRepository {
         return this.db.none(sql.empty);
     }
 
-    // Adds a new record and returns the new id;
-    // It is also an example of mapping HTTP requests directly into query parameters;
+    // Adds a new record and returns the full object;
+    // It is also an example of mapping HTTP requests into query parameters;
     add(values: any) {
-        return this.db.one(sql.add, values, (user: any) => user.id);
+        return this.db.one(sql.add, {
+            userId: +values.userId,
+            productName: values.name
+        });
     }
 
     // Tries to delete a product by id, and returns the number of records deleted;
     remove(id: number) {
-        return this.db.result('DELETE FROM Products WHERE id = $1', id, (r: any) => r.rowCount);
+        return this.db.result('DELETE FROM products WHERE id = $1', id, (r: any) => r.rowCount);
     }
 
-    // Tries to find a product from id;
-    find(id: number) {
-        return this.db.oneOrNone('SELECT * FROM Products WHERE id = $1', id);
+    // Tries to find a user product from user id + product name;
+    find(values) {
+        return this.db.oneOrNone(sql.find, {
+            userId: +values.userId,
+            productName: values.name
+        });
     }
 
     // Returns all product records;
     all() {
-        return this.db.any('SELECT * FROM Products');
+        return this.db.any('SELECT * FROM products');
     }
 
     // Returns the total number of products;
     total() {
-        return this.db.one('SELECT count(*) FROM Products', [], (data: any) => +data.count);
+        return this.db.one('SELECT count(*) FROM products', [], (data: any) => +data.count);
     }
 }

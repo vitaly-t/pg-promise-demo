@@ -33,7 +33,7 @@ while watching what's happening in:
 * the console output (make sure you have NODE_ENV=`development`)
 * errors log - file `db/errors.log`
 
-The application implements two tables: `Users->Products` as one-to-many, both need to be created first via commands
+The application implements two tables: `users->products` as one-to-many, both need to be created first via commands
 `/users/create` and then `products/create`.
 
 Examples:

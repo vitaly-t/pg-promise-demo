@@ -1,9 +1,9 @@
 /*
-    Adds a new product for a specified user.
+    Finds a product by user id + product name.
 
     NOTE: We only add schema here to demonstrate the ability of class QueryFile
     to pre-format SQL with static formatting parameters when needs to be.
 */
-INSERT INTO ${schema~}.products(user_id, name)
-VALUES(${userId}, ${productName})
-RETURNING *
+
+SELECT * FROM ${schema~}.products
+WHERE user_id = ${userId} AND name = ${productName}

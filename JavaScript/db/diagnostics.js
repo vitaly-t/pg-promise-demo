@@ -8,17 +8,17 @@
 // which may be a little better performing, but lacks all the nice formatting
 // provided by pg-monitor.
 
-var os = require('os');
-var fs = require('fs');
-var monitor = require('pg-monitor');
+const os = require('os');
+const fs = require('fs');
+const monitor = require('pg-monitor');
 
 monitor.setTheme('matrix'); // changing the default theme;
 
 // Flag to indicate whether we are in a DEV environment:
-var $DEV = process.env.NODE_ENV === 'development';
+const $DEV = process.env.NODE_ENV === 'development';
 
 // Log file for database-related errors:
-var logFile = './db/errors.log';
+const logFile = './db/errors.log';
 
 // Below we are logging errors exactly the way they are reported by pg-monitor,
 // which you can tweak any way you like, as parameter 'info' provides all the
@@ -34,7 +34,7 @@ monitor.setLog((msg, info) => {
     // errors only, or else the file will grow out of proportion in no time.
 
     if (info.event === 'error') {
-        var logText = os.EOL + msg; // line break + next error message;
+        let logText = os.EOL + msg; // line break + next error message;
         if (info.time) {
             // If it is a new error being reported,
             // and not an additional error line;

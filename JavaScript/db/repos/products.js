@@ -1,6 +1,6 @@
 'use strict';
 
-var sql = require('../sql').products;
+const sql = require('../sql').products;
 
 /*
  This repository mixes hard-coded and dynamic SQL, primarily to show a diverse example of using both.

@@ -1,6 +1,6 @@
 import {QueryFile, TQueryFileOptions} from 'pg-promise';
 
-var path = require('path');
+const path = require('path');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Criteria for deciding whether to place a particular query into an external SQL file or to
@@ -38,9 +38,9 @@ export = {
 // Helper for linking to external query files;
 function sql(file: string): QueryFile {
 
-    var fullPath: string = path.join(__dirname, file); // generating full path;
+    const fullPath: string = path.join(__dirname, file); // generating full path;
 
-    var options: TQueryFileOptions = {
+    const options: TQueryFileOptions = {
 
         // minifying the SQL is always advised;
         // see also option 'compress' in the API;
@@ -53,7 +53,7 @@ function sql(file: string): QueryFile {
         }
     };
 
-    var qf: QueryFile = new QueryFile(fullPath, options);
+    const qf: QueryFile = new QueryFile(fullPath, options);
 
     if (qf.error) {
         // Something is wrong with our query file :(

@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-var app = express();
+const app = express();
 
 import db = require('./db');
 
@@ -105,7 +105,7 @@ function GET(url: string, handler: (req: any) => any) {
     });
 }
 
-var port = 3000;
+const port = 3000;
 
 app.listen(port, () => {
     console.log('\nReady for GET requests on http://localhost:' + port);

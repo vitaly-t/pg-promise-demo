@@ -1,7 +1,7 @@
 'use strict';
 
-var QueryFile = require('pg-promise').QueryFile;
-var path = require('path');
+const QueryFile = require('pg-promise').QueryFile;
+const path = require('path');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Criteria for deciding whether to place a particular query into an external SQL file or to
@@ -39,9 +39,9 @@ module.exports = {
 // Helper for linking to external query files;
 function sql(file) {
 
-    var fullPath = path.join(__dirname, file); // generating full path;
+    const fullPath = path.join(__dirname, file); // generating full path;
 
-    var options = {
+    const options = {
 
         // minifying the SQL is always advised;
         // see also option 'compress' in the API;
@@ -54,7 +54,7 @@ function sql(file) {
         }
     };
 
-    var qf = new QueryFile(fullPath, options);
+    const qf = new QueryFile(fullPath, options);
 
     if (qf.error) {
         // Something is wrong with our query file :(
@@ -75,7 +75,7 @@ function sql(file) {
 
 /*
 // generating a recursive SQL tree for dynamic use of camelized names:
-var enumSql = require('pg-promise').utils.enumSql;
+const enumSql = require('pg-promise').utils.enumSql;
 
 module.exports = enumSql(__dirname, {recursive: true}, file => {
     // NOTE: 'file' contains the full path to the SQL file, as we use __dirname for enumeration.

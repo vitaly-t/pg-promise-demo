@@ -1,9 +1,9 @@
 'use strict';
 
-var db = require('./db');
+const db = require('./db');
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 // NOTE: We implement only GET handlers here, because:
 //
@@ -106,7 +106,7 @@ function GET(url, handler) {
     });
 }
 
-var port = 3000;
+const port = 3000;
 
 app.listen(port, () => {
     console.log('\nReady for GET requests on http://localhost:' + port);

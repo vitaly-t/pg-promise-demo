@@ -13,7 +13,7 @@ interface IExtensions {
 }
 
 // pg-promise initialization options:
-var options: IOptions<IExtensions> = {
+const options: IOptions<IExtensions> = {
 
     // Using a custom promise library, instead of the default ES6 Promise.
     // To make the custom promise protocol visible, you need to patch the
@@ -34,7 +34,7 @@ var options: IOptions<IExtensions> = {
 };
 
 // Database connection parameters:
-var config = {
+const config = {
     host: 'localhost',
     port: 5432,
     database: 'pg-promise-demo',
@@ -44,10 +44,10 @@ var config = {
 // Loading and initializing pg-promise:
 import * as pgPromise from 'pg-promise';
 
-var pgp: IMain = pgPromise(options);
+const pgp: IMain = pgPromise(options);
 
 // Create the database instance with extensions:
-var db = <IDatabase<IExtensions> & IExtensions>pgp(config);
+const db = <IDatabase<IExtensions> & IExtensions>pgp(config);
 
 // Load and initialize optional diagnostics:
 import diagnostics = require('./diagnostics');

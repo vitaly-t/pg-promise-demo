@@ -2,17 +2,17 @@
 
 // Bluebird is the best promise library available today,
 // and is the one recommended here:
-var promise = require('bluebird');
+const promise = require('bluebird');
 
 // Loading all the database repositories separately,
 // because event 'extend' is called multiple times:
-var repos = {
+const repos = {
     users: require('./repos/users'),
     products: require('./repos/products')
 };
 
 // pg-promise initialization options:
-var options = {
+const options = {
 
     // Use a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
@@ -29,7 +29,7 @@ var options = {
 
         // Alternatively, you can set all repositories in a loop:
         //
-        // for (var r in repos) {
+        // for (let r in repos) {
         //    obj[r] = new repos[r](obj, pgp);
         // }
     }
@@ -37,7 +37,7 @@ var options = {
 };
 
 // Database connection parameters:
-var config = {
+const config = {
     host: 'localhost',
     port: 5432,
     database: 'pg-promise-demo',
@@ -45,13 +45,13 @@ var config = {
 };
 
 // Load and initialize pg-promise:
-var pgp = require('pg-promise')(options);
+const pgp = require('pg-promise')(options);
 
 // Create the database instance:
-var db = pgp(config);
+const db = pgp(config);
 
 // Load and initialize optional diagnostics:
-var diagnostics = require('./diagnostics');
+const diagnostics = require('./diagnostics');
 diagnostics.init(options);
 
 // If you ever need access to the library's root (pgp object), you can do it via db.$config.pgp

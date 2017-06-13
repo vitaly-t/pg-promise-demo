@@ -1,7 +1,7 @@
 import {IDatabase, IMain} from 'pg-promise';
 import sqlProvider = require('../sql');
 
-var sql = sqlProvider.products;
+const sql = sqlProvider.products;
 
 /*
  This repository mixes hard-coded and dynamic SQL, primarily to show a diverse example of using both.

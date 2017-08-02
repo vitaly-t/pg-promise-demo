@@ -12,7 +12,7 @@ const repos = {
 };
 
 // pg-promise initialization options:
-const options = {
+const initOptions = {
 
     // Use a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
@@ -20,7 +20,8 @@ const options = {
     // Extending the database protocol with our custom repositories;
     // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
     extend: (obj, dc) => {
-        // Database Context (dc) is only needed when extending multiple databases.
+        // Database Context (dc) is only needed for extending multiple databases
+        // with different access API.
 
         // Do not use 'require()' here, because this event occurs for every task
         // and transaction being executed, which should be as fast as possible.
@@ -45,14 +46,14 @@ const config = {
 };
 
 // Load and initialize pg-promise:
-const pgp = require('pg-promise')(options);
+const pgp = require('pg-promise')(initOptions);
 
 // Create the database instance:
 const db = pgp(config);
 
 // Load and initialize optional diagnostics:
 const diagnostics = require('./diagnostics');
-diagnostics.init(options);
+diagnostics.init(initOptions);
 
 // If you ever need access to the library's root (pgp object), you can do it via db.$config.pgp
 // See: http://vitaly-t.github.io/pg-promise/Database.html#.$config

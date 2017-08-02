@@ -29,10 +29,10 @@
     "bluebird": "3.5",
     "express": "^4.15.3",
     "pg-monitor": "^0.8.2",
-    "pg-promise": "^6.3.4"
+    "pg-promise": "^6.3.6"
   },
   "devDependencies": {
-    "@types/node": "^8.0.9",
+    "@types/node": "^8.0.19",
     "typescript": "2.4"
   }
 }

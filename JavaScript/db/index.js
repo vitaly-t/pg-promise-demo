@@ -22,14 +22,7 @@ const initOptions = {
         // and transaction being executed, which should be as fast as possible.
         obj.users = new repos.Users(obj, pgp);
         obj.products = new repos.Products(obj, pgp);
-
-        // Alternatively, you can set all repositories in a loop:
-        //
-        // for (let r in repos) {
-        //    obj[r] = new repos[r](obj, pgp);
-        // }
     }
-
 };
 
 // Database connection parameters:

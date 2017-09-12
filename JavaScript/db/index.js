@@ -4,12 +4,7 @@
 // and is the one recommended here:
 const promise = require('bluebird');
 
-// Loading all the database repositories separately,
-// because event 'extend' is called multiple times:
-const repos = {
-    users: require('./repos/users'),
-    products: require('./repos/products')
-};
+const repos = require('./repos'); // loading all repositories
 
 // pg-promise initialization options:
 const initOptions = {
@@ -20,13 +15,13 @@ const initOptions = {
     // Extending the database protocol with our custom repositories;
     // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
     extend: (obj, dc) => {
-        // Database Context (dc) is only needed for extending multiple databases
-        // with different access API.
+        // Database Context (dc) is mainly useful when extending multiple databases
+        // with different access API-s.
 
         // Do not use 'require()' here, because this event occurs for every task
         // and transaction being executed, which should be as fast as possible.
-        obj.users = new repos.users(obj, pgp);
-        obj.products = new repos.products(obj, pgp);
+        obj.users = new repos.Users(obj, pgp);
+        obj.products = new repos.Products(obj, pgp);
 
         // Alternatively, you can set all repositories in a loop:
         //

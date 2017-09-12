@@ -4,13 +4,7 @@
 import * as promise from 'bluebird';
 import {IMain, IDatabase, IOptions} from 'pg-promise';
 
-import {UsersRepository} from './repos/users';
-import {ProductsRepository} from './repos/products';
-
-interface IExtensions {
-    users: UsersRepository,
-    products: ProductsRepository
-}
+import {IExtensions, UsersRepository, ProductsRepository} from './repos';
 
 // pg-promise initialization options:
 const initOptions: IOptions<IExtensions> = {
@@ -23,7 +17,7 @@ const initOptions: IOptions<IExtensions> = {
     // Extending the database protocol with our custom repositories;
     // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
     extend: (obj: IExtensions, dc: any) => {
-        // Database Context (dc) is only needed for extending multiple databases
+        // Database Context (dc) is mainly needed for extending multiple databases
         // with different access API.
 
         // Do not use 'require()' here, because this event occurs for every task

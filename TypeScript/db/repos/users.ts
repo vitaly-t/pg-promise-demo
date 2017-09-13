@@ -1,4 +1,4 @@
-import {IDatabase, IMain} from 'pg-promise';
+import {IDatabase, IMain, ColumnSet} from 'pg-promise';
 import sqlProvider = require('../sql');
 
 const sql = sqlProvider.users;
@@ -12,6 +12,9 @@ export class UsersRepository {
     constructor(db: any, pgp: IMain) {
         this.db = db;
         this.pgp = pgp; // library's root, if ever needed;
+
+        // set-up all ColumnSet objects, if needed:
+        this.createColumnsets();
     }
 
     // if you need to access other repositories from here,
@@ -19,6 +22,9 @@ export class UsersRepository {
     private db: IDatabase<any>;
 
     private pgp: IMain;
+
+    // ColumnSet objects static namespace:
+    private static cs: UserColumnsets;
 
     // Creates the table;
     create() {
@@ -69,4 +75,26 @@ export class UsersRepository {
     total() {
         return this.db.one('SELECT count(*) FROM users', [], (a: any) => +a.count);
     }
+
+    private createColumnsets() {
+        // create all ColumnSet objects only once:
+        if (!UsersRepository.cs) {
+            const helpers = this.pgp.helpers, cs: UserColumnsets = {};
+
+            // Type TableName is useful when schema isn't default, otherwise you can
+            // just pass in a string for the table name;
+            const table = new helpers.TableName({table: 'user', schema: 'public'});
+
+            cs.insert = new helpers.ColumnSet(['name'], {table});
+            cs.update = cs.insert.extend(['?id']);
+
+            UsersRepository.cs = cs;
+        }
+    }
+
 }
+
+type UserColumnsets = {
+    insert?: ColumnSet,
+    update?: ColumnSet
+};

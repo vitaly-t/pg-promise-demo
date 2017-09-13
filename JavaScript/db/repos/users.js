@@ -10,6 +10,9 @@ class UsersRepository {
     constructor(db, pgp) {
         this.db = db;
         this.pgp = pgp;
+
+        // set-up all ColumnSet objects, if needed:
+        this.cs = createColumnsets(pgp);
     }
 
     // Creates the table;
@@ -63,14 +66,23 @@ class UsersRepository {
     }
 }
 
-/*
-    And if you prefer object prototyping instead, it will work the same.
+//////////////////////////////////////////////////////////
+// showing how to statically initialize ColumnSet objects
 
-    EXAMPLE:
+let cs; // ColumnSet objects static namespace
 
-    UsersRepository.prototype.all = function () {
-        return this.db.any('SELECT * FROM users');
+function createColumnsets(pgp) {
+    // create all ColumnSet objects only once:
+    if (!cs) {
+        cs = {};
+        // Type TableName is useful when schema isn't default, otherwise you can
+        // just pass in a string for the table name;
+        const table = new pgp.helpers.TableName({table: 'users', schema: 'public'});
+
+        cs.insert = new pgp.helpers.ColumnSet(['name'], {table});
+        cs.update = cs.insert.extend(['?id']);
     }
-*/
+    return cs;
+}
 
 module.exports = UsersRepository;

@@ -77,7 +77,7 @@ function createColumnsets(pgp) {
         const table = new pgp.helpers.TableName({table: 'products', schema: 'public'});
 
         cs.insert = new pgp.helpers.ColumnSet(['name'], {table});
-        cs.update = cs.insertUsers.extend(['?id', '?user_id']);
+        cs.update = cs.insert.extend(['?id', '?user_id']);
     }
     return cs;
 }

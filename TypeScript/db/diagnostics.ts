@@ -56,7 +56,7 @@ pgMonitor.setLog((msg, info) => {
 
 export = {
     // Monitor initialization function;
-    init: (options: IOptions<any>) => {
+    init(options: IOptions<any>) {
         if ($DEV) {
             // In a DEV environment, we attach to all supported events:
             pgMonitor.attach(options);

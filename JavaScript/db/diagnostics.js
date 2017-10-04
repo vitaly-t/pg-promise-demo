@@ -57,7 +57,7 @@ monitor.setLog((msg, info) => {
 
 module.exports = {
     // Monitor initialization function;
-    init: options => {
+    init(options) {
         if ($DEV) {
             // In a DEV environment, we attach to all supported events:
             monitor.attach(options);

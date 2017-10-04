@@ -14,7 +14,7 @@ const initOptions = {
 
     // Extending the database protocol with our custom repositories;
     // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
-    extend: (obj, dc) => {
+    extend(obj, dc) {
         // Database Context (dc) is mainly useful when extending multiple databases
         // with different access API-s.
 

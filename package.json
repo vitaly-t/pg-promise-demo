@@ -26,13 +26,13 @@
     "npm": ">=2.15"
   },
   "dependencies": {
-    "bluebird": "~3.5.0",
-    "express": "~4.15.4",
+    "bluebird": "~3.5.1",
+    "express": "~4.16.1",
     "pg-monitor": "~0.8.2",
-    "pg-promise": "~6.5.3"
+    "pg-promise": "~6.10.2"
   },
   "devDependencies": {
-    "@types/node": "~8.0.28",
-    "typescript": "~2.5.2"
+    "@types/node": "~8.0.32",
+    "typescript": "~2.5.3"
   }
 }

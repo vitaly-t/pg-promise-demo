@@ -73,6 +73,7 @@ export class ProductsRepository {
         return this.db.one('SELECT count(*) FROM products', [], (data: any) => +data.count);
     }
 
+    // example of setting up ColumnSet objects:
     private createColumnsets() {
         // create all ColumnSet objects only once:
         if (!ProductsRepository.cs) {

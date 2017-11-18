@@ -64,7 +64,7 @@ class ProductsRepository {
 }
 
 //////////////////////////////////////////////////////////
-// showing how to statically initialize ColumnSet objects
+// Example of statically initializing ColumnSet objects:
 
 let cs; // ColumnSet objects static namespace
 

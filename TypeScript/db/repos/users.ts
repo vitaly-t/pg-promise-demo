@@ -76,6 +76,7 @@ export class UsersRepository {
         return this.db.one('SELECT count(*) FROM users', [], (a: any) => +a.count);
     }
 
+    // example of setting up ColumnSet objects:
     private createColumnsets() {
         // create all ColumnSet objects only once:
         if (!UsersRepository.cs) {

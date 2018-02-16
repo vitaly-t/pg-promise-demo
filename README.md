@@ -8,7 +8,7 @@ It shows how to organize an enterprise-level database application, with consider
 The demo focuses on the following:
 
 * The best way to organize your database module
-* Use of the repositories pattern for your database
+* Use of the _Repository_ pattern for your database
 * Efficient use of queries via external SQL files
 * Query monitoring and error diagnostics
 
@@ -33,14 +33,32 @@ while watching what's happening in:
 * the console output (make sure you have NODE_ENV=`development`)
 * errors log - file `db/errors.log`
 
-The application implements two tables: `users->products` as one-to-many, both need to be created first via commands
-`/users/create` and then `products/create`.
+The application implements two tables: `users->products` as one-to-many. Once the app is running, you should create
+and populate those as the very first commands:
 
-Examples:
 ```
-localhost:3000/users/create
-localhost:3000/users/init
-localhost:3000/products/create
+/users/create
+/users/init
+/products/create
+```
+
+After that see other supported API commands in the code:
+ 
+```
+/users/empty
+/users/drop
+/users/find/:id
+/users/remove/:id
+/users/all
+/users/total
+
+/products/drop
+/products/empty
+/products/add/:userId/:name
+/products/find/:userId/:name
+/products/remove/:id
+/products/all
+/products/total
 ```
 
 [JavaScript]:https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript

@@ -1,4 +1,5 @@
 import {IDatabase, IMain, ColumnSet} from 'pg-promise';
+import {IResult} from 'pg-promise/typescript/pg-subset';
 import sqlProvider = require('../sql');
 
 const sql = sqlProvider.products;
@@ -52,7 +53,7 @@ export class ProductsRepository {
 
     // Tries to delete a product by id, and returns the number of records deleted;
     remove(id: number) {
-        return this.db.result('DELETE FROM products WHERE id = $1', +id, (r: any) => r.rowCount);
+        return this.db.result('DELETE FROM products WHERE id = $1', +id, (r: IResult) => r.rowCount);
     }
 
     // Tries to find a user product from user id + product name;
@@ -70,7 +71,7 @@ export class ProductsRepository {
 
     // Returns the total number of products;
     total() {
-        return this.db.one('SELECT count(*) FROM products', [], (data: any) => +data.count);
+        return this.db.one('SELECT count(*) FROM products', [], (data: { count }) => +data.count);
     }
 
     // example of setting up ColumnSet objects:
@@ -79,8 +80,8 @@ export class ProductsRepository {
         if (!ProductsRepository.cs) {
             const helpers = this.pgp.helpers, cs: ProductColumnsets = {};
 
-            // Type TableName is useful when schema isn't default, otherwise you can
-            // just pass in a string for the table name;
+            // Type TableName is useful when schema isn't default "public" ,
+            // otherwise you can just pass in a string for the table name.
             const table = new helpers.TableName({table: 'products', schema: 'public'});
 
             cs.insert = new helpers.ColumnSet(['name'], {table});

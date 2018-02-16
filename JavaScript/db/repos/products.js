@@ -2,6 +2,8 @@
 
 const sql = require('../sql').products;
 
+const cs = {}; // Reusable ColumnSet objects.
+
 /*
  This repository mixes hard-coded and dynamic SQL, primarily to show a diverse example of using both.
  */
@@ -12,7 +14,7 @@ class ProductsRepository {
         this.pgp = pgp;
 
         // set-up all ColumnSet objects, if needed:
-        this.cs = createColumnsets(pgp);
+        createColumnsets(pgp);
     }
 
     // Creates the table;
@@ -66,14 +68,11 @@ class ProductsRepository {
 //////////////////////////////////////////////////////////
 // Example of statically initializing ColumnSet objects:
 
-let cs; // ColumnSet objects static namespace
-
 function createColumnsets(pgp) {
     // create all ColumnSet objects only once:
-    if (!cs) {
-        cs = {};
-        // Type TableName is useful when schema isn't default, otherwise you can
-        // just pass in a string for the table name;
+    if (!cs.insert) {
+        // Type TableName is useful when schema isn't default "public" ,
+        // otherwise you can just pass in a string for the table name.
         const table = new pgp.helpers.TableName({table: 'products', schema: 'public'});
 
         cs.insert = new pgp.helpers.ColumnSet(['name'], {table});

@@ -15,7 +15,7 @@ The demo focuses on the following:
 The demo includes two separate implementations, with identical functionality:
 
 * [ES6 JavaScript implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript)
-* [TypeScript 2.x implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript)
+* [TypeScript 2.x/3.x implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript)
 
 ### Installing & Running
 

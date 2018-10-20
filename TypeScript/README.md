@@ -1,9 +1,9 @@
-## TypeScript 2.x implementation of pg-promise-demo
+## TypeScript 2.x/3.x implementation of pg-promise-demo
 
 ### Prerequisites
 
 * Node.js version 4.5 or later
-* TypeScript 2.x, which you can install globally, via command `npm install typescript -g`
+* TypeScript 2.x/3.x, which you can install globally, via command `npm install typescript -g`
 * [Typings], which you can install globally, via command `npm install typings -g`
 
 ### Installation

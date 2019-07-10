@@ -1,8 +1,6 @@
 import {IDatabase, IMain, ColumnSet} from 'pg-promise';
 import {IResult} from 'pg-promise/typescript/pg-subset';
-import sqlProvider = require('../sql');
-
-const sql = sqlProvider.users;
+import {users as sql} from '../sql';
 
 /*
  This repository mixes hard-coded and dynamic SQL, primarily to show a diverse example of using both.

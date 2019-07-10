@@ -47,8 +47,8 @@ function sql(file) {
         // see also option 'compress' in the API;
         minify: true,
 
-        // Showing how to use static pre-formatting parameters -
-        // we have variable 'schema' in each SQL (as an example);
+        // Example of using static pre-formatting parameters -
+        // we have variable 'schema' in each of our SQL files:
         params: {
             schema: 'public' // replace ${schema~} with "public"
         }

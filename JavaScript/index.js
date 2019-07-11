@@ -8,7 +8,7 @@ const app = express();
 // NOTE: We implement only GET handlers here, because:
 //
 // 1. This demo is to be tested by typing URL-s manually in the browser;
-// 2. The demo's focus is on a proper database layer, not a web server.
+// 2. The demo's focus is on a proper database layer, not an HTTP service.
 
 //////////////////////////////////////////////
 // Users Web API

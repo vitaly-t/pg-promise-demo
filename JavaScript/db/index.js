@@ -1,7 +1,6 @@
 'use strict';
 
-// Bluebird is the best promise library available today,
-// and is the one recommended here:
+// Bluebird is the best promise library available today, and is the one recommended here:
 const promise = require('bluebird');
 const dbConfig = require('../../db-config.json');
 

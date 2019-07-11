@@ -14,14 +14,4 @@ This implementation uses ES6 syntax, and requires Node.JS 4.5 or later.
 
 ### Starting
 
-* Navigating to the projects's root folder:
-
-```
-$ cd JavaScript
-```
-
-* Running the application:
-
-```
-$ node index.js
-```
+Navigate into folder `JavaScript`, and run the service via `node index.js` command.

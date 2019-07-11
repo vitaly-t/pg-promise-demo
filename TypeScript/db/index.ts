@@ -1,5 +1,3 @@
-/// <reference path='../../typings/index.d.ts' />
-
 // Bluebird is the best promise library available today, and is the one recommended here:
 import * as promise from 'bluebird';
 import {IMain, IDatabase, IOptions} from 'pg-promise';

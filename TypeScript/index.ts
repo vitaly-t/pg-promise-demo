@@ -105,7 +105,7 @@ function GET(url: string, handler: (req: any) => any) {
     });
 }
 
-const port = 3000;
+const port = 5000;
 
 app.listen(port, () => {
     console.log('\nReady for GET requests on http://localhost:' + port);

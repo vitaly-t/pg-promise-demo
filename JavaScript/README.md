@@ -15,4 +15,6 @@ This implementation uses ES6 syntax, and requires Node.JS 4.5 or later.
 ### Starting
 
 * Navigate into folder `JavaScript`, and run the HTTP service with `node index.js` command.
-* Proceed with the [steps on the main page](../)
+* Proceed with the [steps on the main page].
+
+[steps on the main page]:https://github.com/vitaly-t/pg-promise-demo

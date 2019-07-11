@@ -15,4 +15,6 @@
 
 * Navigate into folder `TypeScript`, and run `tsc` there to generate all `.js` files.
 * Run the HTTP service with `node index.js` command.
-* Proceed with the [steps on the main page](../)
+* Proceed with the [steps on the main page].
+
+[steps on the main page]:https://github.com/vitaly-t/pg-promise-demo

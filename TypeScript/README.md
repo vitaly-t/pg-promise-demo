@@ -7,7 +7,7 @@
 
 ### Installation
 
-* Set up an empty test database, according to the connection details in [TypeScript/db/index.ts](https://github.com/vitaly-t/pg-promise-demo/blob/master/TypeScript/db/index.ts#L30),
+* Set up an empty test database, according to the connection details in [db-config.json](https://github.com/vitaly-t/pg-promise-demo/blob/master/db-config.json),
   which you can also change to fit your test environment.
 * Install Node.js dependencies, by running `npm install` from the project's root folder.
 
@@ -15,5 +15,3 @@
 
 * Navigate into folder `TypeScript`, and run `tsc` there to generate all `.js` files.
 * Run the application with `node index.js` command.
-
-[Typings]:https://github.com/typings/typings

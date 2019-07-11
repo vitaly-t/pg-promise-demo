@@ -1,5 +1,6 @@
 // Bluebird is the best promise library available today, and is the one recommended here:
 import * as promise from 'bluebird';
+import * as dbConfig from '../../db-config.json';
 import {IMain, IDatabase, IOptions} from 'pg-promise';
 
 import {IExtensions, UsersRepository, ProductsRepository} from './repos';
@@ -23,15 +24,6 @@ const initOptions: IOptions<IExtensions> = {
         obj.users = new UsersRepository(obj, pgp);
         obj.products = new ProductsRepository(obj, pgp);
     }
-
-};
-
-// Database connection parameters:
-const config = {
-    host: 'localhost',
-    port: 5432,
-    database: 'pg-promise-demo',
-    user: 'postgres'
 };
 
 // Loading and initializing pg-promise:
@@ -40,7 +32,7 @@ import * as pgPromise from 'pg-promise';
 const pgp: IMain = pgPromise(initOptions);
 
 // Create the database instance with extensions:
-const db = <IDatabase<IExtensions> & IExtensions>pgp(config);
+const db = <IDatabase<IExtensions> & IExtensions>pgp(dbConfig);
 
 // Load and initialize optional diagnostics:
 import diagnostics = require('./diagnostics');

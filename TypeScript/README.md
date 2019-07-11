@@ -14,4 +14,5 @@
 ### Starting
 
 * Navigate into folder `TypeScript`, and run `tsc` there to generate all `.js` files.
-* Run the application with `node index.js` command.
+* Run the HTTP service with `node index.js` command.
+* Proceed with the [steps on the main page](../)

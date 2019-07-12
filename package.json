@@ -29,7 +29,7 @@
     "bluebird": "3.5.5",
     "express": "4.17.1",
     "pg-monitor": "1.1.0",
-    "pg-promise": "8.7.3"
+    "pg-promise": "8.7.4"
   },
   "devDependencies": {
     "@types/node": "12.6.2",

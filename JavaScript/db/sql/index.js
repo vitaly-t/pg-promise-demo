@@ -1,5 +1,3 @@
-'use strict';
-
 const QueryFile = require('pg-promise').QueryFile;
 const path = require('path');
 

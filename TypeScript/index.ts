@@ -1,8 +1,7 @@
 import * as express from 'express';
+import db = require('./db');
 
 const app = express();
-
-import db = require('./db');
 
 // NOTE: We implement only GET handlers here, because:
 //
@@ -27,11 +26,9 @@ GET('/users/drop', () => db.users.drop());
 
 // add a new user, if it doesn't exist yet, and return the object:
 GET('/users/add/:name', req => {
-    return db.task('add-user', t => {
-        return t.users.findByName(req.params.name)
-            .then(user => {
-                return user || t.users.add(req.params.name);
-            });
+    return db.task('add-user', async t => {
+        const user = await t.users.findByName(req.params.name);
+        return user || t.users.add(req.params.name);
     });
 });
 
@@ -62,11 +59,9 @@ GET('/products/empty', () => db.products.empty());
 
 // add a new user product, if it doesn't exist yet, and return the object:
 GET('/products/add/:userId/:name', req => {
-    return db.task('add-product', t => {
-        return t.products.find(req.params)
-            .then(product => {
-                return product || t.products.add(req.params);
-            });
+    return db.task('add-product', async t => {
+        const product = await t.products.find(req.params);
+        return product || t.products.add(req.params);
     });
 });
 
@@ -88,20 +83,19 @@ GET('/products/total', () => db.products.total());
 
 // Generic GET handler;
 function GET(url: string, handler: (req: any) => any) {
-    app.get(url, (req, res) => {
-        handler(req)
-            .then((data: any) => {
-                res.json({
-                    success: true,
-                    data
-                });
-            })
-            .catch((error: any) => {
-                res.json({
-                    success: false,
-                    error: error.message || error
-                });
+    app.get(url, async (req, res) => {
+        try {
+            const data = await handler(req);
+            res.json({
+                success: true,
+                data
             });
+        } catch (error) {
+            res.json({
+                success: false,
+                error: error.message || error
+            });
+        }
     });
 }
 

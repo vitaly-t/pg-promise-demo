@@ -1,5 +1,3 @@
-'use strict';
-
 const sql = require('../sql').users;
 
 const cs = {}; // Reusable ColumnSet objects.

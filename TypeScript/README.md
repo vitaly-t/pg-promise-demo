@@ -1,8 +1,10 @@
 ## TypeScript 3.x implementation of pg-promise-demo
 
+The project is configured to transpile into ES2017, and requires Node.js v7.6 or later.
+
 ### Prerequisites
 
-* Node.js version 4.5 or later
+* Node.js v7.6 or later
 * TypeScript 3.x, installed globally via command `npm install typescript -g`
 
 ### Installation

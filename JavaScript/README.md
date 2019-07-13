@@ -1,10 +1,10 @@
 ## JavaScript implementation of pg-promise-demo
 
-This implementation uses ES6 syntax, and requires Node.JS 4.5 or later.
+This implementation uses ES2017 syntax, and requires Node.JS v7.6 or later.
 
 ### Prerequisites
 
-* Node.js version 4.5 or later
+* Node.js v7.6 or later
 
 ### Installation
 

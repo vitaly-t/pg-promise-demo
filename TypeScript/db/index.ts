@@ -40,5 +40,5 @@ import diagnostics = require('./diagnostics');
 diagnostics.init(initOptions);
 
 // If you ever need access to the library's root (pgp object), you can do it via db.$config.pgp
-// See: http://vitaly-t.github.io/pg-promise/Database.html#.$config
+// See: https://vitaly-t.github.io/pg-promise/Database.html#$config
 export = db;

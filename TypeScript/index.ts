@@ -1,5 +1,5 @@
 import * as express from 'express';
-import db = require('./db');
+import {db} from './db';
 
 const app = express();
 
@@ -28,7 +28,7 @@ GET('/users/drop', () => db.users.drop());
 GET('/users/add/:name', req => {
     return db.task('add-user', async t => {
         const user = await t.users.findByName(req.params.name);
-        return user || t.users.add(req.params.name);
+        return user || await t.users.add(req.params.name);
     });
 });
 
@@ -61,7 +61,7 @@ GET('/products/empty', () => db.products.empty());
 GET('/products/add/:userId/:name', req => {
     return db.task('add-product', async t => {
         const product = await t.products.find(req.params);
-        return product || t.products.add(req.params);
+        return product || await t.products.add(req.params);
     });
 });
 

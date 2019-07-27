@@ -28,10 +28,10 @@
     "bluebird": "3.5.5",
     "express": "4.17.1",
     "pg-monitor": "1.1.0",
-    "pg-promise": "git+https://github.com/vitaly-t/pg-promise.git#ts3"
+    "pg-promise": "9.0.0"
   },
   "devDependencies": {
-    "@types/node": "12.6.2",
+    "@types/node": "12.6.8",
     "typescript": "3.5.3"
   }
 }

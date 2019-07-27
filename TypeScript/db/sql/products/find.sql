@@ -5,5 +5,5 @@
     to pre-format SQL with static formatting parameters when needs to be.
 */
 
-SELECT * FROM ${schema~}.products
+SELECT * FROM products
 WHERE user_id = ${userId} AND name = ${productName}

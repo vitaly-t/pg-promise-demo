@@ -14,7 +14,7 @@
 
 */
 
-INSERT INTO ${schema~}.users(name) VALUES
+INSERT INTO users(name) VALUES
 ('Demo User 1'), -- user 1;
 ('Demo User 2'), -- user 2;
 ('Demo User 3'), -- user 3;

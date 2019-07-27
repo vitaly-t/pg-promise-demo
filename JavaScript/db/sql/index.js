@@ -43,13 +43,9 @@ function sql(file) {
 
         // minifying the SQL is always advised;
         // see also option 'compress' in the API;
-        minify: true,
+        minify: true
 
-        // Example of using static pre-formatting parameters -
-        // we have variable 'schema' in each of our SQL files:
-        params: {
-            schema: 'public' // replace ${schema~} with "public"
-        }
+        // See also property 'params' for two-step template formatting
     };
 
     const qf = new QueryFile(fullPath, options);
@@ -67,21 +63,6 @@ function sql(file) {
     // http://vitaly-t.github.io/pg-promise/QueryFile.html
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Possible alternative - enumerating all SQL files automatically ;)
-// API: http://vitaly-t.github.io/pg-promise/utils.html#.enumSql
-
-/*
-// generating a recursive SQL tree for dynamic use of camelized names:
-const enumSql = require('pg-promise').utils.enumSql;
-
-module.exports = enumSql(__dirname, {recursive: true}, file => {
-    // NOTE: 'file' contains the full path to the SQL file, as we use __dirname for enumeration.
-    return new QueryFile(file, {
-        minify: true,
-        params: {
-            schema: 'public' // replace ${schema~} with "public"
-        }
-    });
-});
-*/
+///////////////////////////////////////////////////////////////////
+// Possible alternative - enumerating all SQL files automatically:
+// http://vitaly-t.github.io/pg-promise/utils.html#.enumSql

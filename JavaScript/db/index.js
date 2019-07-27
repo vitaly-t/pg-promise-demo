@@ -1,7 +1,7 @@
 const promise = require('bluebird'); // best promise library today
 const pgPromise = require('pg-promise'); // pg-promise core library
 const dbConfig = require('../../db-config.json'); // db connection details
-const Diagnostics = require('./diagnostics'); // optional diagnostics
+const {Diagnostics} = require('./diagnostics'); // optional diagnostics
 const repos = require('./repos'); // loading all repositories
 
 // pg-promise initialization options:

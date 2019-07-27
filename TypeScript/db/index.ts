@@ -1,44 +1,39 @@
-// Bluebird is the best promise library available today, and is the one recommended here:
-import * as promise from 'bluebird';
-import * as dbConfig from '../../db-config.json';
-import {IMain, IDatabase, IOptions} from 'pg-promise';
-
+import * as promise from 'bluebird'; // best promise library today
+import * as dbConfig from '../../db-config.json'; // db connection details
+import * as pgPromise from 'pg-promise'; // pg-promise core library
+import {Diagnostics} from './diagnostics'; // optional diagnostics
+import {IInitOptions, IDatabase, IMain} from 'pg-promise';
 import {IExtensions, UsersRepository, ProductsRepository} from './repos';
 
-// pg-promise initialization options:
-const initOptions: IOptions<IExtensions> = {
+type ExtendedProtocol = IDatabase<IExtensions> & IExtensions;
 
-    // Using a custom promise library, instead of the default ES6 Promise.
-    // To make the custom promise protocol visible, you need to patch the
-    // following file: node_modules/pg-promise/typescript/ext-promise.d.ts
+// pg-promise initialization options:
+const initOptions: IInitOptions<IExtensions> = {
+
+    // Using a custom promise library, instead of the default ES6 Promise:
     promiseLib: promise,
 
     // Extending the database protocol with our custom repositories;
     // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
-    extend(obj: IExtensions, dc: any) {
-        // Database Context (dc) is mainly needed for extending multiple databases
-        // with different access API.
+    extend(obj: ExtendedProtocol, dc: any) {
+        // Database Context (dc) is mainly needed for extending multiple databases with different access API.
 
-        // Do not use 'require()' here, because this event occurs for every task
-        // and transaction being executed, which should be as fast as possible.
+        // Do not use 'require()' here, because this event occurs for every task and transaction being executed,
+        // which should be as fast as possible.
         obj.users = new UsersRepository(obj, pgp);
         obj.products = new ProductsRepository(obj, pgp);
     }
 };
 
-// Loading and initializing pg-promise:
-import * as pgPromise from 'pg-promise';
-
+// Initializing the library:
 const pgp: IMain = pgPromise(initOptions);
 
-// Create the database instance with extensions:
-const db = <IDatabase<IExtensions> & IExtensions>pgp(dbConfig);
+// Creating the database instance with extensions:
+const db: ExtendedProtocol = pgp<IExtensions>(dbConfig);
 
-// Load and initialize optional diagnostics:
-import diagnostics = require('./diagnostics');
+// Initializing optional diagnostics:
+Diagnostics.init(initOptions);
 
-diagnostics.init(initOptions);
-
-// If you ever need access to the library's root (pgp object), you can do it via db.$config.pgp
+// Alternatively, you can get access to pgp via db.$config.pgp
 // See: https://vitaly-t.github.io/pg-promise/Database.html#$config
-export = db;
+export {db, pgp};

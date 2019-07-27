@@ -53,9 +53,9 @@ monitor.setLog((msg, info) => {
 
 });
 
-module.exports = {
+class Diagnostics {
     // Monitor initialization function;
-    init(options) {
+    static init(options) {
         if ($DEV) {
             // In a DEV environment, we attach to all supported events:
             monitor.attach(options);
@@ -65,4 +65,6 @@ module.exports = {
             monitor.attach(options, ['error']);
         }
     }
-};
+}
+
+module.exports = {Diagnostics};

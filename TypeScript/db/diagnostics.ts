@@ -9,7 +9,7 @@
 import os = require('os');
 import fs = require('fs');
 import * as pgMonitor from 'pg-monitor';
-import {IOptions} from 'pg-promise';
+import {IInitOptions} from 'pg-promise';
 
 pgMonitor.setTheme('matrix'); // changing the default theme;
 
@@ -54,9 +54,9 @@ pgMonitor.setLog((msg, info) => {
 
 });
 
-export = {
+export class Diagnostics {
     // Monitor initialization function;
-    init(options: IOptions<any>) {
+    static init(options: IInitOptions) {
         if ($DEV) {
             // In a DEV environment, we attach to all supported events:
             pgMonitor.attach(options);
@@ -66,4 +66,4 @@ export = {
             pgMonitor.attach(options, ['error']);
         }
     }
-};
+}

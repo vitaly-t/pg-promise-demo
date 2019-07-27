@@ -1,7 +1,7 @@
-// Bluebird is the best promise library available today, and is the one recommended here:
-const promise = require('bluebird');
-const dbConfig = require('../../db-config.json');
-
+const promise = require('bluebird'); // best promise library today
+const pgPromise = require('pg-promise'); // pg-promise core library
+const dbConfig = require('../../db-config.json'); // db connection details
+const Diagnostics = require('./diagnostics'); // optional diagnostics
 const repos = require('./repos'); // loading all repositories
 
 // pg-promise initialization options:
@@ -13,26 +13,24 @@ const initOptions = {
     // Extending the database protocol with our custom repositories;
     // API: http://vitaly-t.github.io/pg-promise/global.html#event:extend
     extend(obj, dc) {
-        // Database Context (dc) is mainly useful when extending multiple databases
-        // with different access API-s.
+        // Database Context (dc) is mainly useful when extending multiple databases with different access API-s.
 
-        // Do not use 'require()' here, because this event occurs for every task
-        // and transaction being executed, which should be as fast as possible.
+        // Do not use 'require()' here, because this event occurs for every task and transaction being executed,
+        // which should be as fast as possible.
         obj.users = new repos.Users(obj, pgp);
         obj.products = new repos.Products(obj, pgp);
     }
 };
 
-// Load and initialize pg-promise:
-const pgp = require('pg-promise')(initOptions);
+// Initializing the library:
+const pgp = pgPromise(initOptions);
 
-// Create the database instance:
+// Creating the database instance:
 const db = pgp(dbConfig);
 
-// Load and initialize optional diagnostics:
-const diagnostics = require('./diagnostics');
-diagnostics.init(initOptions);
+// Initializing optional diagnostics:
+Diagnostics.init(initOptions);
 
-// If you ever need access to the library's root (pgp object), you can do it via db.$config.pgp
+// Alternatively, you can get access to pgp via db.$config.pgp
 // See: https://vitaly-t.github.io/pg-promise/Database.html#$config
-module.exports = db;
+module.exports = {db, pgp};

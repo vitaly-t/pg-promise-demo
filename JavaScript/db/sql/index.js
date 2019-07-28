@@ -1,4 +1,4 @@
-const QueryFile = require('pg-promise').QueryFile;
+const {QueryFile} = require('pg-promise');
 const path = require('path');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

@@ -27,7 +27,7 @@
   "dependencies": {
     "bluebird": "3.5.5",
     "express": "4.17.1",
-    "pg-monitor": "1.1.0",
+    "pg-monitor": "1.2.0",
     "pg-promise": "9.0.0"
   },
   "devDependencies": {

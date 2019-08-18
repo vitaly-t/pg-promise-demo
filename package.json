@@ -31,6 +31,7 @@
     "pg-promise": "9.0.2"
   },
   "devDependencies": {
+    "@types/bluebird": "3.5.27",
     "@types/node": "12.7.2",
     "typescript": "3.5.3"
   }

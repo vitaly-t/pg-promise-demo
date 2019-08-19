@@ -1,3 +1,10 @@
+/*
+  Here we typed in simple models manually. But there are many tools
+  out there for generating models manually, from an existing database.
+
+  For example, schemats: https://github.com/sweetiq/schemats
+*/
+
 export interface User {
     id: number;
     name: string;

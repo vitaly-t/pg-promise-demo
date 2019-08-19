@@ -29,7 +29,7 @@ const initOptions: IInitOptions<IExtensions> = {
 const pgp: IMain = pgPromise(initOptions);
 
 // Creating the database instance with extensions:
-const db: ExtendedProtocol = pgp<IExtensions>(dbConfig);
+const db: ExtendedProtocol = pgp(dbConfig);
 
 // Initializing optional diagnostics:
 Diagnostics.init(initOptions);

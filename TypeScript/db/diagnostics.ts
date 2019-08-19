@@ -56,7 +56,7 @@ pgMonitor.setLog((msg, info) => {
 
 export class Diagnostics {
     // Monitor initialization function;
-    static init(options: IInitOptions) {
+    static init<Ext = {}>(options: IInitOptions<Ext>) {
         if ($DEV) {
             // In a DEV environment, we attach to all supported events:
             pgMonitor.attach(options);

@@ -1,12 +1,17 @@
 const express = require('express');
 const {db} = require('./db');
 
-const app = express();
-
-// NOTE: We implement only GET handlers here, because:
+/////////////////////////////////////////////////////////////////////////////
+// IMPORTANT:
+//
+// Do not re-use the HTTP-service part of the code from here!
+// It is an over-simplified HTTP service with just GET handlers, because:
 //
 // 1. This demo is to be tested by typing URL-s manually in the browser;
-// 2. The demo's focus is on a proper database layer, not an HTTP service.
+// 2. The focus here is on a proper database layer only, not an HTTP service.
+/////////////////////////////////////////////////////////////////////////////
+
+const app = express();
 
 //////////////////////////////////////////////
 // Users Web API

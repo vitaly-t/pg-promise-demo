@@ -17,6 +17,10 @@ The demo includes two separate implementations, with identical functionality:
 * [ES7 JavaScript implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/JavaScript)
 * [TypeScript 3.x implementation](https://github.com/vitaly-t/pg-promise-demo/tree/master/TypeScript)
 
+Each uses a basic HTTP service to let you quickly test db calls in a browser. Do not however reuse
+any of the HTTP-service code, it is over-simplified, for the test, not for you to copy. The demo focus
+is on the database layer only. 
+
 ### Installing & Running
 
 You can either clone it or install via `$ npm install pg-promise-demo`.

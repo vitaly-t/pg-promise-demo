@@ -1,4 +1,4 @@
-import {IDatabase, IMain, ColumnSet} from 'pg-promise';
+import {IDatabase, IMain} from 'pg-promise';
 import {IResult} from 'pg-promise/typescript/pg-subset';
 import {User} from '../models';
 import {users as sql} from '../sql';

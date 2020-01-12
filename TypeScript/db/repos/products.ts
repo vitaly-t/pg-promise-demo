@@ -4,27 +4,29 @@ import {Product} from '../models';
 import {products as sql} from '../sql';
 
 /*
- This repository mixes hard-coded and dynamic SQL, primarily to show a diverse example of using both.
- */
+ This repository mixes hard-coded and dynamic SQL, just to show how to use both.
+*/
 
 export class ProductsRepository {
 
-    constructor(db: any, pgp: IMain) {
-        this.db = db;
-        this.pgp = pgp; // library's root, if ever needed;
-
-        // set-up all ColumnSet objects, if needed:
-        this.createColumnSets();
+    /**
+     * @param db
+     * Automated database connection context/interface.
+     *
+     * If you ever need to access other repositories from this one,
+     * you will have to replace type 'IDatabase<any>' with 'any'.
+     *
+     * @param pgp
+     * Library's root, if ever needed, like to access 'helpers'
+     * or other namespaces available from the root.
+     */
+    constructor(private db: IDatabase<any>, private pgp: IMain) {
+        /*
+          If your repository needs to use helpers like ColumnSet,
+          you should create it conditionally, inside the constructor,
+          i.e. only once, as a singleton.
+        */
     }
-
-    // if you need to access other repositories from here,
-    // you will have to replace 'IDatabase<any>' with 'any':
-    private db: IDatabase<any>;
-
-    private pgp: IMain;
-
-    // ColumnSet objects static namespace:
-    private static cs: ProductColumnSets;
 
     // Creates the table;
     async create(): Promise<null> {
@@ -72,26 +74,4 @@ export class ProductsRepository {
     async total(): Promise<number> {
         return this.db.one('SELECT count(*) FROM products', [], (data: { count: string }) => +data.count);
     }
-
-    // example of setting up ColumnSet objects:
-    private createColumnSets(): void {
-        // create all ColumnSet objects only once:
-        if (!ProductsRepository.cs) {
-            const helpers = this.pgp.helpers, cs: ProductColumnSets = {};
-
-            // Type TableName is useful when schema isn't default "public" ,
-            // otherwise you can just pass in a string for the table name.
-            const table = new helpers.TableName({table: 'products', schema: 'public'});
-
-            cs.insert = new helpers.ColumnSet(['name'], {table});
-            cs.update = cs.insert.extend(['?id', '?user_id']);
-
-            ProductsRepository.cs = cs;
-        }
-    }
 }
-
-type ProductColumnSets = {
-    insert?: ColumnSet,
-    update?: ColumnSet
-};

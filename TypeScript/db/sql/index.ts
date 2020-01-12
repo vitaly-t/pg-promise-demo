@@ -17,7 +17,7 @@ const path = require('path');
 // is very easy to overcome by using only Named Parameters for your query formatting.
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-const users = {
+export const users = {
     create: sql('users/create.sql'),
     empty: sql('users/empty.sql'),
     init: sql('users/init.sql'),
@@ -25,15 +25,13 @@ const users = {
     add: sql('users/add.sql')
 };
 
-const products = {
+export const products = {
     create: sql('products/create.sql'),
     empty: sql('products/empty.sql'),
     drop: sql('products/drop.sql'),
     find: sql('products/find.sql'),
     add: sql('products/add.sql')
 };
-
-export {users, products};
 
 ///////////////////////////////////////////////
 // Helper for linking to external query files;

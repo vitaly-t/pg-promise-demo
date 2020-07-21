@@ -1,4 +1,4 @@
-const sql = require('../sql').products;
+const {products: sql} = require('../sql');
 
 const cs = {}; // Reusable ColumnSet objects.
 

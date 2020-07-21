@@ -1,4 +1,4 @@
-const sql = require('../sql').users;
+const {users: sql} = require('../sql');
 
 const cs = {}; // Reusable ColumnSet objects.
 

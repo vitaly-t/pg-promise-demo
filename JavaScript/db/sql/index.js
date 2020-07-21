@@ -1,5 +1,5 @@
 const {QueryFile} = require('pg-promise');
-const path = require('path');
+const {join: joinPath} = require('path');
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Criteria for deciding whether to place a particular query into an external SQL file or to
@@ -37,7 +37,7 @@ module.exports = {
 // Helper for linking to external query files;
 function sql(file) {
 
-    const fullPath = path.join(__dirname, file); // generating full path;
+    const fullPath = joinPath(__dirname, file); // generating full path;
 
     const options = {
 

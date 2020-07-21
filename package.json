@@ -27,13 +27,13 @@
   "dependencies": {
     "bluebird": "3.7.2",
     "express": "4.17.1",
-    "pg-monitor": "1.4.0",
-    "pg-promise": "10.5.7"
+    "pg-monitor": "1.4.1",
+    "pg-promise": "10.5.8"
   },
   "devDependencies": {
     "@types/bluebird": "3.5.32",
     "@types/express": "4.17.6",
-    "@types/node": "14.0.13",
-    "typescript": "3.9.5"
+    "@types/node": "14.0.24",
+    "typescript": "3.9.7"
   }
 }

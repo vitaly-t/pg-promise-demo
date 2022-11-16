@@ -1,10 +1,10 @@
 ## JavaScript implementation of pg-promise-demo
 
-This implementation uses ES2017 syntax, and requires Node.JS v8.0.0 or later.
+This implementation uses ES2017 syntax, and requires Node.JS v10.0.0 or later.
 
 ### Prerequisites
 
-* Node.js v8.0.0 or later
+* Node.js v10.0.0 or later
 
 ### Installation
 
@@ -15,6 +15,6 @@ This implementation uses ES2017 syntax, and requires Node.JS v8.0.0 or later.
 ### Starting
 
 * Navigate into folder `JavaScript`, and run the HTTP service with `node index.js` command.
-* Proceed with the [steps on the main page].
+* Proceed with [the steps on the main page].
 
 [steps on the main page]:https://github.com/vitaly-t/pg-promise-demo

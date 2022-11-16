@@ -16,52 +16,52 @@ class UsersRepository {
     }
 
     // Creates the table;
-    async create() {
+    create() {
         return this.db.none(sql.create);
     }
 
     // Initializes the table with some user records, and return their id-s;
-    async init() {
+    init() {
         return this.db.map(sql.init, [], row => row.id);
     }
 
     // Drops the table;
-    async drop() {
+    drop() {
         return this.db.none(sql.drop);
     }
 
     // Removes all records from the table;
-    async empty() {
+    empty() {
         return this.db.none(sql.empty);
     }
 
     // Adds a new user, and returns the new object;
-    async add(name) {
+    add(name) {
         return this.db.one(sql.add, name);
     }
 
     // Tries to delete a user by id, and returns the number of records deleted;
-    async remove(id) {
+    remove(id) {
         return this.db.result('DELETE FROM users WHERE id = $1', +id, r => r.rowCount);
     }
 
     // Tries to find a user from id;
-    async findById(id) {
+    findById(id) {
         return this.db.oneOrNone('SELECT * FROM users WHERE id = $1', +id);
     }
 
     // Tries to find a user from name;
-    async findByName(name) {
+    findByName(name) {
         return this.db.oneOrNone('SELECT * FROM users WHERE name = $1', name);
     }
 
     // Returns all user records;
-    async all() {
+    all() {
         return this.db.any('SELECT * FROM users');
     }
 
     // Returns the total number of users;
-    async total() {
+    total() {
         return this.db.one('SELECT count(*) FROM users', [], a => +a.count);
     }
 }

@@ -95,7 +95,7 @@ function GET(url: string, handler: (req: any) => any) {
                 success: true,
                 data
             });
-        } catch (error) {
+        } catch (error: any) {
             res.json({
                 success: false,
                 error: error.message || error

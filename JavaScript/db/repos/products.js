@@ -16,23 +16,23 @@ class ProductsRepository {
     }
 
     // Creates the table;
-    async create() {
+    create() {
         return this.db.none(sql.create);
     }
 
     // Drops the table;
-    async drop() {
+    drop() {
         return this.db.none(sql.drop);
     }
 
     // Removes all records from the table;
-    async empty() {
+    empty() {
         return this.db.none(sql.empty);
     }
 
     // Adds a new record and returns the full object;
     // It is also an example of mapping HTTP requests into query parameters;
-    async add(values) {
+    add(values) {
         return this.db.one(sql.add, {
             userId: +values.userId,
             productName: values.name
@@ -40,12 +40,12 @@ class ProductsRepository {
     }
 
     // Tries to delete a product by id, and returns the number of records deleted;
-    async remove(id) {
+    remove(id) {
         return this.db.result('DELETE FROM products WHERE id = $1', +id, r => r.rowCount);
     }
 
     // Tries to find a user product from user id + product name;
-    async find(values) {
+    find(values) {
         return this.db.oneOrNone(sql.find, {
             userId: +values.userId,
             productName: values.name
@@ -53,12 +53,12 @@ class ProductsRepository {
     }
 
     // Returns all product records;
-    async all() {
+    all() {
         return this.db.any('SELECT * FROM products');
     }
 
     // Returns the total number of products;
-    async total() {
+    total() {
         return this.db.one('SELECT count(*) FROM products', [], a => +a.count);
     }
 }

@@ -6,8 +6,8 @@
 // which may be a little better performing, but lacks all the nice formatting
 // provided by pg-monitor.
 
-import os = require('os');
-import fs = require('fs');
+import {EOL} from 'os';
+import {appendFileSync} from 'fs';
 import * as pgMonitor from 'pg-monitor';
 import {IInitOptions} from 'pg-promise';
 
@@ -33,13 +33,13 @@ pgMonitor.setLog((msg, info) => {
     // errors only, or else the file will grow out of proportion in no time.
 
     if (info.event === 'error') {
-        let logText = os.EOL + msg; // line break + next error message;
+        let logText = EOL + msg; // line break + next error message;
         if (info.time) {
             // If it is a new error being reported,
             // and not an additional error line;
-            logText = os.EOL + logText; // add another line break in front;
+            logText = EOL + logText; // add another line break in front;
         }
-        fs.appendFileSync(logFile, logText); // add error handling as required;
+        appendFileSync(logFile, logText); // add error handling as required;
     }
 
     // We absolutely must not let the monitor write anything into the console

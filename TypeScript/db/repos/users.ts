@@ -1,6 +1,6 @@
 import {IDatabase, IMain} from 'pg-promise';
 import {IResult} from 'pg-promise/typescript/pg-subset';
-import {User} from '../models';
+import {IUser} from '../models';
 import {users as sql} from '../sql';
 
 /*
@@ -49,7 +49,7 @@ export class UsersRepository {
     }
 
     // Adds a new user, and returns the new object;
-    add(name: string): Promise<User> {
+    add(name: string): Promise<IUser> {
         return this.db.one(sql.add, name);
     }
 
@@ -59,17 +59,17 @@ export class UsersRepository {
     }
 
     // Tries to find a user from id;
-    findById(id: number): Promise<User | null> {
+    findById(id: number): Promise<IUser | null> {
         return this.db.oneOrNone('SELECT * FROM users WHERE id = $1', +id);
     }
 
     // Tries to find a user from name;
-    findByName(name: string): Promise<User | null> {
+    findByName(name: string): Promise<IUser | null> {
         return this.db.oneOrNone('SELECT * FROM users WHERE name = $1', name);
     }
 
     // Returns all user records;
-    all(): Promise<User[]> {
+    all(): Promise<IUser[]> {
         return this.db.any('SELECT * FROM users');
     }
 

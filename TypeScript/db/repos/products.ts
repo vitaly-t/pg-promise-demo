@@ -1,6 +1,6 @@
 import {IDatabase, IMain} from 'pg-promise';
 import {IResult} from 'pg-promise/typescript/pg-subset';
-import {Product} from '../models';
+import {IProduct} from '../models';
 import {products as sql} from '../sql';
 
 /*
@@ -45,7 +45,7 @@ export class ProductsRepository {
 
     // Adds a new record and returns the full object;
     // It is also an example of mapping HTTP requests into query parameters;
-    add(values: { userId: number, name: string }): Promise<Product> {
+    add(values: { userId: number, name: string }): Promise<IProduct> {
         return this.db.one(sql.add, {
             userId: +values.userId,
             productName: values.name
@@ -58,7 +58,7 @@ export class ProductsRepository {
     }
 
     // Tries to find a user product from user id + product name;
-    find(values: { userId: number, name: string }): Promise<Product | null> {
+    find(values: { userId: number, name: string }): Promise<IProduct | null> {
         return this.db.oneOrNone(sql.find, {
             userId: +values.userId,
             productName: values.name
@@ -66,7 +66,7 @@ export class ProductsRepository {
     }
 
     // Returns all product records;
-    all(): Promise<Product[]> {
+    all(): Promise<IProduct[]> {
         return this.db.any('SELECT * FROM products');
     }
 

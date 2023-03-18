@@ -5,12 +5,12 @@
   For example, schemats: https://github.com/sweetiq/schemats
 */
 
-export interface User {
+export interface IUser {
     id: number;
     name: string;
 }
 
-export interface Product {
+export interface IProduct {
     id: number;
     user_id: number;
     name: string;
